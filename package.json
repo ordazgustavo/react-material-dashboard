@@ -1,0 +1,74 @@
+{
+  "name": "react-material-dashboard",
+  "version": "0.1.0",
+  "private": false,
+  "description": "OSS Material Design Dashboard",
+  "author": {
+    "name": "Gustavo Ordaz",
+    "email": "ordazsgustavo@gmail.com",
+    "url": "https://ordazgustavo.netlify/com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ordazgustavo/react-material-dashboard"
+  },
+  "keywords": [
+    "React",
+    "Material",
+    "Dashboard"
+  ],
+  "dependencies": {
+    "@material-ui/core": "^3.1.1",
+    "@material-ui/icons": "^3.0.1",
+    "@reach/router": "^1.2.1",
+    "classnames": "^2.2.6",
+    "prop-types": "^15.6.2",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2",
+    "react-icons": "^3.1.0",
+    "react-loadable": "^5.5.0",
+    "react-scripts": "^2.0.0",
+    "react-testing-library": "^5.1.0"
+  },
+  "scripts": {
+    "docz:dev": "docz dev",
+    "docz:build": "docz build",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "test:coverage": "react-scripts test --env=jsdom --coverage",
+    "eject": "react-scripts eject",
+    "format": "prettier --write \"src/**/*.+(js|md|css|json)\""
+  },
+  "devDependencies": {
+    "docz": "^0.11.2",
+    "eslint": "^5.6.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-prettier": "^3.1.0",
+    "eslint-config-react": "^1.1.7",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-react": "^7.11.1",
+    "husky": "^1.0.1",
+    "lint-staged": "^7.3.0",
+    "prettier": "^1.14.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "linters": {
+      "*.{js,md,css,json}": [
+        "prettier --write",
+        "git add"
+      ]
+    }
+  },
+  "browserslist": [
+    ">0.25%",
+    "not op_mini all",
+    "ie 11"
+  ]
+}
