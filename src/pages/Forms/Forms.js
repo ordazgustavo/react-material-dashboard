@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { withStyles } from '@material-ui/core/styles'
 import { Paper, TextField } from '@material-ui/core'
 import PageHeader from '../../components/PageLayout/PageHeader'
@@ -32,7 +32,7 @@ class Forms extends Component {
     const { classes, title } = this.props
 
     return (
-      <>
+      <Fragment>
         <PageHeader title={title} />
         <PageWrapper>
           <Paper className={classes.root}>
@@ -49,7 +49,7 @@ class Forms extends Component {
             </form>
           </Paper>
         </PageWrapper>
-      </>
+      </Fragment>
     )
   }
 }

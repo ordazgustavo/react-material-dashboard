@@ -6,13 +6,15 @@ const styles = theme =>
   console.log(theme) || {
     root: {
       display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'space-between',
+      flexDirection: 'column',
       backgroundColor: theme.palette.primary.main,
+      color: theme.palette.primary.contrastText,
       padding: theme.spacing.unit * 3,
+      paddingBottom: 0,
       marginTop: theme.spacing.unit * 8
     },
     title: {
+      marginBottom: theme.spacing.unit * 3,
       color: theme.palette.primary.contrastText,
       fontWeight: 'bold'
     }
@@ -20,9 +22,11 @@ const styles = theme =>
 
 const PageHeader = ({ classes, title, children }) => (
   <div className={classes.root}>
-    <Typography className={classes.title} variant="title" component="h2">
-      {title}
-    </Typography>
+    <div>
+      <Typography className={classes.title} variant="title" component="h2">
+        {title}
+      </Typography>
+    </div>
     {children}
   </div>
 )

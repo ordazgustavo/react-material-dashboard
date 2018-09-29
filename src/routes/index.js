@@ -6,20 +6,17 @@ import TableIcon from '@material-ui/icons/TableChart'
 
 export default [
   {
-    to: '/',
+    to: 'dashboard',
     label: 'Dashboard',
-    title: 'React Material Dashboard',
     icon: DashboardIcon
   },
   {
     to: 'forms',
     label: 'Forms',
-    title: 'Forms',
     icon: InputIcon
   },
   {
     label: 'Headings',
-    title: 'Headings',
     icon: TitleIcon,
     multiple: true,
     name: 'headings',
@@ -35,7 +32,6 @@ export default [
   {
     to: 'tables',
     label: 'Tables',
-    title: 'Tables',
     icon: TableIcon
   }
 ]

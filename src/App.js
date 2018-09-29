@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { Router } from '@reach/router'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import classNames from 'classnames'
@@ -25,14 +25,11 @@ import MoreIcon from '@material-ui/icons/More'
 import AccountCircle from '@material-ui/icons/AccountCircle'
 import LogoutIcon from '@material-ui/icons/ExitToApp'
 
-import Dashboard from './pages/Dashboard/Dashboard'
-import Forms from './pages/Forms/Forms'
-import Headings from './pages/Headings/Headings'
-import Tables from './pages/Tables/Tables'
 import DrawerMenu from './components/DrawerMenu/DrawerMenu'
 
 import styles from './App.styles'
 import routes from './routes'
+import pages from './pages'
 
 class App extends Component {
   state = {
@@ -128,7 +125,7 @@ class App extends Component {
     )
 
     return (
-      <>
+      <Fragment>
         <CssBaseline />
         <div className={classes.root}>
           <AppBar
@@ -240,14 +237,13 @@ class App extends Component {
           </Drawer>
           <main className={classes.content}>
             <Router>
-              <Dashboard path="/" title="Dashboard" />
-              <Forms path="forms" title="Forms" />
-              <Headings path="headings" title="Headings" />
-              <Tables path="tables" title="Tables" />
+              {pages.map(page => (
+                <page.component path={page.path} title={page.title} />
+              ))}
             </Router>
           </main>
         </div>
-      </>
+      </Fragment>
     )
   }
 }
