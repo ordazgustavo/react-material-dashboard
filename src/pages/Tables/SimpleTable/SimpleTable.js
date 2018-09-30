@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
 import Table from '@material-ui/core/Table'
@@ -11,9 +11,9 @@ import Paper from '@material-ui/core/Paper'
 import PageWrapper from '../../../components/PageLayout/PageWrapper'
 
 let counter = 0
-function createData(name, calories, fat) {
+function createData(data) {
   counter += 1
-  return { id: counter, name, calories, fat }
+  return { id: counter, ...data }
 }
 
 const CustomTableCell = withStyles(theme => ({
@@ -49,44 +49,29 @@ const styles = theme => ({
   }
 })
 
-class SimpleTable extends React.Component {
-  state = {
-    rows: [
-      createData('Cupcake', 305, 3.7),
-      createData('Donut', 452, 25.0),
-      createData('Eclair', 262, 16.0),
-      createData('Frozen yoghurt', 159, 6.0),
-      createData('Gingerbread', 356, 16.0),
-      createData('Honeycomb', 408, 3.2),
-      createData('Ice cream sandwich', 237, 9.0),
-      createData('Jelly Bean', 375, 0.0),
-      createData('KitKat', 518, 26.0),
-      createData('Lollipop', 392, 0.2),
-      createData('Marshmallow', 318, 0),
-      createData('Nougat', 360, 19.0),
-      createData('Oreo', 437, 18.0)
-    ].sort((a, b) => (a.calories < b.calories ? -1 : 1)),
-    page: 0,
-    rowsPerPage: 5
-  }
-
-  handleChangePage = (event, page) => {
-    this.setState({ page })
-  }
-
-  handleChangeRowsPerPage = event => {
-    this.setState({ rowsPerPage: event.target.value })
-  }
-
-  handleSubmit = event => {
-    event.preventDefault()
-  }
-
+class SimpleTable extends Component {
   render() {
     const { classes } = this.props
-    const { rows, rowsPerPage, page } = this.state
-    const emptyRows =
-      rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage)
+    const cols = [
+      createData({ label: 'Dessert (100g serving)' }),
+      createData({ label: 'Calories', numeric: true }),
+      createData({ label: 'Protein (g)', numeric: true })
+    ]
+    const rows = [
+      createData({ name: 'Cupcake', calories: 305, fat: 3.7 }),
+      createData({ name: 'Donut', calories: 452, fat: 25.0 }),
+      createData({ name: 'Eclair', calories: 262, fat: 16.0 }),
+      createData({ name: 'Frozen yoghurt', calories: 159, fat: 6.0 }),
+      createData({ name: 'Gingerbread', calories: 356, fat: 16.0 }),
+      createData({ name: 'Honeycomb', calories: 408, fat: 3.2 }),
+      createData({ name: 'Ice cream sandwich', calories: 237, fat: 9.0 }),
+      createData({ name: 'Jelly Bean', calories: 375, fat: 0.0 }),
+      createData({ name: 'KitKat', calories: 518, fat: 26.0 }),
+      createData({ name: 'Lollipop', calories: 392, fat: 0.2 }),
+      createData({ name: 'Marshmallow', calories: 318, fat: 0 }),
+      createData({ name: 'Nougat', calories: 360, fat: 19.0 }),
+      createData({ name: 'Oreo', calories: 437, fat: 18.0 })
+    ].sort((a, b) => (a.calories < b.calories ? -1 : 1))
 
     return (
       <Fragment>
@@ -96,31 +81,23 @@ class SimpleTable extends React.Component {
               <Table className={classes.table}>
                 <TableHead>
                   <TableRow>
-                    <CustomTableCell>Dessert (100g serving)</CustomTableCell>
-                    <CustomTableCell numeric>Calories</CustomTableCell>
-                    <CustomTableCell numeric>Protein (g)</CustomTableCell>
+                    {cols.map(({ label, ...rest }) => (
+                      <CustomTableCell key={rest.id} {...rest}>
+                        {label}
+                      </CustomTableCell>
+                    ))}
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {rows
-                    .slice(
-                      page * rowsPerPage,
-                      page * rowsPerPage + rowsPerPage
-                    )
-                    .map(row => (
-                      <TableRow key={row.id}>
-                        <TableCell component="th" scope="row">
-                          {row.name}
-                        </TableCell>
-                        <TableCell numeric>{row.calories}</TableCell>
-                        <TableCell numeric>{row.fat}</TableCell>
-                      </TableRow>
-                    ))}
-                  {emptyRows > 0 && (
-                    <TableRow style={{ height: 48 * emptyRows }}>
-                      <TableCell colSpan={6} />
+                  {rows.map(row => (
+                    <TableRow key={row.id}>
+                      <TableCell component="th" scope="row">
+                        {row.name}
+                      </TableCell>
+                      <TableCell numeric>{row.calories}</TableCell>
+                      <TableCell numeric>{row.fat}</TableCell>
                     </TableRow>
-                  )}
+                  ))}
                 </TableBody>
               </Table>
             </div>

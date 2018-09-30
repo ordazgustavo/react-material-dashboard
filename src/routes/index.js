@@ -6,7 +6,7 @@ import TableIcon from '@material-ui/icons/TableChart'
 
 export default [
   {
-    to: 'dashboard',
+    to: './',
     label: 'Dashboard',
     icon: DashboardIcon
   },

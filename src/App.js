@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react'
 import { Router } from '@reach/router'
-import CssBaseline from '@material-ui/core/CssBaseline'
 import classNames from 'classnames'
 import {
   AppBar,
@@ -29,7 +28,12 @@ import DrawerMenu from './components/DrawerMenu/DrawerMenu'
 
 import styles from './App.styles'
 import routes from './routes'
-import pages from './pages'
+import {
+  AsyncDashboard,
+  AsyncForms,
+  AsyncHeadings,
+  AsyncTables
+} from './pages'
 
 class App extends Component {
   state = {
@@ -123,10 +127,9 @@ class App extends Component {
         </MenuItem>
       </Menu>
     )
-
+    console.log('reder -> App')
     return (
       <Fragment>
-        <CssBaseline />
         <div className={classes.root}>
           <AppBar
             position="absolute"
@@ -237,9 +240,10 @@ class App extends Component {
           </Drawer>
           <main className={classes.content}>
             <Router>
-              {pages.map(page => (
-                <page.component path={page.path} title={page.title} />
-              ))}
+              <AsyncDashboard path="/" title="Dashboard" />
+              <AsyncForms path="forms/*" title="Forms" />
+              <AsyncHeadings path="headings/*" title="Headings" />
+              <AsyncTables path="tables/*" title="tables" />
             </Router>
           </main>
         </div>
