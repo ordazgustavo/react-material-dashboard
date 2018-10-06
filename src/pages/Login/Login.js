@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 import { navigate } from '@reach/router'
-import { withStyles } from '@material-ui/core/styles'
+import withStyles from '@material-ui/core/styles/withStyles'
 import Paper from '@material-ui/core/Paper'
 import Avatar from '@material-ui/core/Avatar'
 import Typography from '@material-ui/core/Typography'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 import LockIcon from '@material-ui/icons/Lock'
-import auth from '../../utils/auth'
+
+import AuthContext from '../../utils/auth/AuthContext'
 
 const styles = theme => ({
   layout: {
@@ -49,9 +50,10 @@ class Login extends Component {
     password: ''
   }
 
-  submitHandler = event => {
-    event.preventDefault()
-    auth.authenticate(() => {})
+  submitHandler = authenticate => e => {
+    e.preventDefault()
+    const { email, password } = this.state
+    authenticate(email, password)
     navigate('/dashboard')
   }
 
@@ -63,47 +65,55 @@ class Login extends Component {
 
   render() {
     const { classes } = this.props
+    const { email, password } = this.state
 
     return (
-      <main className={classes.layout}>
-        <CustomPaper>
-          <Avatar className={classes.avatar}>
-            <LockIcon />
-          </Avatar>
-          <Typography variant="headline">Sign in</Typography>
-          <form onSubmit={this.submitHandler} className={classes.loginForm}>
-            <TextField
-              label="Email"
-              type="email"
-              name="email"
-              value={this.state.email}
-              onChange={this.handleChange}
-              // autoFocus
-              margin="normal"
-              fullWidth
-            />
-            <TextField
-              label="Password"
-              name="password"
-              value={this.state.password}
-              onChange={this.handleChange}
-              margin="normal"
-              fullWidth
-            />
-            <Button
-              className={classes.submit}
-              type="submit"
-              variant="raised"
-              color="primary"
-            >
-              Submit
-            </Button>
-          </form>
-          <Typography variant="caption">
-            Hint: just hit submit, you'll be redirected to the dashboard
-          </Typography>
-        </CustomPaper>
-      </main>
+      <AuthContext.Consumer>
+        {context => (
+          <main className={classes.layout}>
+            <CustomPaper>
+              <Avatar className={classes.avatar}>
+                <LockIcon />
+              </Avatar>
+              <Typography variant="headline">Sign in</Typography>
+              <form
+                onSubmit={this.submitHandler(context.authenticate)}
+                className={classes.loginForm}
+              >
+                <TextField
+                  label="Email"
+                  type="email"
+                  name="email"
+                  value={email}
+                  onChange={this.handleChange}
+                  // autoFocus
+                  margin="normal"
+                  fullWidth
+                />
+                <TextField
+                  label="Password"
+                  name="password"
+                  value={password}
+                  onChange={this.handleChange}
+                  margin="normal"
+                  fullWidth
+                />
+                <Button
+                  className={classes.submit}
+                  type="submit"
+                  variant="raised"
+                  color="primary"
+                >
+                  Submit
+                </Button>
+              </form>
+              <Typography variant="caption">
+                Hint: just hit submit, you'll be redirected to the dashboard
+              </Typography>
+            </CustomPaper>
+          </main>
+        )}
+      </AuthContext.Consumer>
     )
   }
 }

@@ -2,14 +2,12 @@ import React from 'react'
 import classNames from 'classnames'
 import withStyles from '@material-ui/core/styles/withStyles'
 import { fade } from '@material-ui/core/styles/colorManipulator'
-import {
-  AppBar,
-  Toolbar,
-  Typography,
-  IconButton,
-  Badge,
-  Input
-} from '@material-ui/core'
+import AppBar from '@material-ui/core/AppBar'
+import Toolbar from '@material-ui/core/Toolbar'
+import Typography from '@material-ui/core/Typography'
+import IconButton from '@material-ui/core/IconButton'
+import Input from '@material-ui/core/Input'
+import Badge from '@material-ui/core/Badge'
 import MenuIcon from '@material-ui/icons/Menu'
 import SearchIcon from '@material-ui/icons/Search'
 import MailIcon from '@material-ui/icons/Mail'
@@ -112,6 +110,7 @@ const AppToolbar = ({
   handleDrawerState,
   handleProfileMenuOpen,
   handleMobileMenuOpen,
+  handleLogout,
   children
 }) => (
   <AppBar
@@ -172,7 +171,7 @@ const AppToolbar = ({
         >
           <AccountCircle />
         </IconButton>
-        <IconButton color="inherit">
+        <IconButton onClick={handleLogout} color="inherit">
           <LogoutIcon />
         </IconButton>
       </div>

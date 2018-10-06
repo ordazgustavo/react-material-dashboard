@@ -5,6 +5,7 @@ import { Menu, MenuItem, IconButton, Badge } from '@material-ui/core'
 import MailIcon from '@material-ui/icons/Mail'
 import NotificationsIcon from '@material-ui/icons/Notifications'
 import AccountCircle from '@material-ui/icons/AccountCircle'
+import LogoutIcon from '@material-ui/icons/ExitToApp'
 
 import Dashboard from './Dashboard/Dashboard'
 import Forms from './Forms/Forms'
@@ -15,6 +16,7 @@ import styles from './Home.styles'
 import routes from '../routes'
 import Toolbar from '../components/Toolbar/Toolbar'
 import SideDrawer from '../components/SideDrawer/SideDrawer'
+import AuthContext from '../utils/auth/AuthContext'
 
 const ProfileMenu = ({ anchorEl, isMenuOpen, handleMenuClose }) => (
   <Menu
@@ -34,7 +36,8 @@ const MobileMenu = ({
   mobileMoreAnchorEl,
   isMobileMenuOpen,
   handleMobileMenuClose,
-  handleProfileMenuOpen
+  handleProfileMenuOpen,
+  handleLogout
 }) => (
   <Menu
     anchorEl={mobileMoreAnchorEl}
@@ -64,6 +67,12 @@ const MobileMenu = ({
         <AccountCircle />
       </IconButton>
       <p>Profile</p>
+    </MenuItem>
+    <MenuItem onClick={handleLogout}>
+      <IconButton color="inherit">
+        <LogoutIcon />
+      </IconButton>
+      <p>Sign out</p>
     </MenuItem>
   </Menu>
 )
@@ -106,45 +115,51 @@ class Home extends Component {
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl)
 
     return (
-      <div className={classes.root}>
-        <Toolbar
-          isMenuOpen={isMenuOpen}
-          open={open}
-          isMobileMenuOpen={isMobileMenuOpen}
-          handleDrawerState={this.handleDrawerState}
-          handleProfileMenuOpen={this.handleProfileMenuOpen}
-          handleMenuClose={this.handleMenuClose}
-          handleMobileMenuOpen={this.handleMobileMenuOpen}
-          handleMobileMenuClose={this.handleMobileMenuClose}
-        >
-          <ProfileMenu
-            anchorEl={anchorEl}
-            isMenuOpen={isMenuOpen}
-            handleMenuClose={this.handleMenuClose}
-          />
-          <MobileMenu
-            classes={classes}
-            mobileMoreAnchorEl={mobileMoreAnchorEl}
-            isMobileMenuOpen={isMobileMenuOpen}
-            handleMobileMenuClose={this.handleMobileMenuClose}
-            handleProfileMenuOpen={this.handleProfileMenuOpen}
-          />
-        </Toolbar>
-        <SideDrawer
-          routes={routes}
-          open={open}
-          theme={theme}
-          handleDrawerState={this.handleDrawerState}
-        />
-        <main className={classes.content}>
-          <Router>
-            <Dashboard path="dashboard/*" />
-            <Forms path="forms/*" />
-            <Headings path="headings/*" />
-            <Tables path="tables/*" />
-          </Router>
-        </main>
-      </div>
+      <AuthContext.Consumer>
+        {context => (
+          <div className={classes.root}>
+            <Toolbar
+              isMenuOpen={isMenuOpen}
+              open={open}
+              isMobileMenuOpen={isMobileMenuOpen}
+              handleDrawerState={this.handleDrawerState}
+              handleProfileMenuOpen={this.handleProfileMenuOpen}
+              handleMenuClose={this.handleMenuClose}
+              handleMobileMenuOpen={this.handleMobileMenuOpen}
+              handleMobileMenuClose={this.handleMobileMenuClose}
+              handleLogout={context.logout}
+            >
+              <ProfileMenu
+                anchorEl={anchorEl}
+                isMenuOpen={isMenuOpen}
+                handleMenuClose={this.handleMenuClose}
+              />
+              <MobileMenu
+                classes={classes}
+                mobileMoreAnchorEl={mobileMoreAnchorEl}
+                isMobileMenuOpen={isMobileMenuOpen}
+                handleMobileMenuClose={this.handleMobileMenuClose}
+                handleProfileMenuOpen={this.handleProfileMenuOpen}
+                handleLogout={context.logout}
+              />
+            </Toolbar>
+            <SideDrawer
+              routes={routes}
+              open={open}
+              theme={theme}
+              handleDrawerState={this.handleDrawerState}
+            />
+            <main className={classes.content}>
+              <Router>
+                <Dashboard path="dashboard/*" />
+                <Forms path="forms/*" />
+                <Headings path="headings/*" />
+                <Tables path="tables/*" />
+              </Router>
+            </main>
+          </div>
+        )}
+      </AuthContext.Consumer>
     )
   }
 }
