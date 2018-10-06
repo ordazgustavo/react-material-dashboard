@@ -7,6 +7,7 @@ import Typography from '@material-ui/core/Typography'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 import LockIcon from '@material-ui/icons/Lock'
+import auth from '../../utils/auth'
 
 const styles = theme => ({
   layout: {
@@ -44,13 +45,14 @@ const CustomPaper = withStyles(theme => ({
 
 class Login extends Component {
   state = {
-    email: null,
-    password: null
+    email: '',
+    password: ''
   }
 
   submitHandler = event => {
     event.preventDefault()
-    navigate('dashboard')
+    auth.authenticate(() => {})
+    navigate('/dashboard')
   }
 
   handleChange = event => {
