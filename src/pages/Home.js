@@ -151,10 +151,10 @@ class Home extends Component {
             />
             <main className={classes.content}>
               <Router>
-                <Dashboard path="dashboard/*" />
-                <Forms path="forms/*" />
-                <Headings path="headings/*" />
-                <Tables path="tables/*" />
+                <Dashboard path="dashboard/*" title="Dashboard" />
+                <Forms path="forms/*" title="Forms" />
+                <Headings path="headings/*" title="Headings" />
+                <Tables path="tables/*" title="Tables" />
               </Router>
             </main>
           </div>

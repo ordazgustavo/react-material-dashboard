@@ -10,9 +10,9 @@ export default class AuthProvider extends Component {
   }
 
   state = {
-    id: null,
-    name: '',
-    email: ''
+    id: 'lima123',
+    name: 'Gustavo',
+    email: 'me@ordazgustavo.com'
   }
 
   authenticate = (email, password) => {

@@ -11,9 +11,24 @@ export default [
     icon: DashboardIcon
   },
   {
-    to: 'forms',
     label: 'Forms',
-    icon: InputIcon
+    icon: InputIcon,
+    multiple: true,
+    name: 'forms',
+    options: [
+      {
+        to: 'forms/regular-form',
+        label: 'Regular Form',
+        title: 'Regular Form',
+        icon: StarBorderIcon
+      },
+      {
+        to: 'forms/formik-form',
+        label: 'Formik Form',
+        title: 'Formik Form',
+        icon: StarBorderIcon
+      }
+    ]
   },
   {
     label: 'Headings',
