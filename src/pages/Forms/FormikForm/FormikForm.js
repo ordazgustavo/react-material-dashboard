@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Formik, Form, Field } from 'formik'
+import { Formik, Form, Field, FieldArray } from 'formik'
 import withStyles from '@material-ui/core/styles/withStyles'
 import Button from '@material-ui/core/Button'
 
@@ -14,22 +14,41 @@ const FormikForm = ({ classes }) => (
     initialValues={initialValues}
     validationSchema={validation}
     onSubmit={(values, actions) => {
+      // eslint-disable-next-line
       console.log(values, actions)
     }}
   >
     {props => {
-      const { isSubmitting, dirty } = props
+      const { isSubmitting, dirty, values } = props
       return (
         <Form className={classes.container}>
           <div className={classes.inputContainer}>
-            {formStructure.map(element => (
-              <Field
-                key={element.name}
-                component={InputType}
-                className={classes.textField}
-                {...element}
-              />
-            ))}
+            {formStructure.map(
+              element =>
+                (element.type === 'checkbox-group' ||
+                  element.type === 'radio-group') &&
+                element.options ? (
+                  <FieldArray
+                    key={element.name}
+                    render={arrayHelper => (
+                      <InputType
+                        values={values}
+                        {...element}
+                        {...arrayHelper}
+                        className={classes.textField}
+                      />
+                    )}
+                    {...element}
+                  />
+                ) : (
+                  <Field
+                    key={element.name}
+                    component={InputType}
+                    className={classes.textField}
+                    {...element}
+                  />
+                )
+            )}
           </div>
           <div className={classes.buttonContainer}>
             <Button
