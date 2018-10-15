@@ -75,7 +75,7 @@ class Login extends Component {
               <Avatar className={classes.avatar}>
                 <LockIcon />
               </Avatar>
-              <Typography variant="headline">Sign in</Typography>
+              <Typography variant="h5">Sign in</Typography>
               <form
                 onSubmit={this.submitHandler(context.authenticate)}
                 className={classes.loginForm}
@@ -101,15 +101,12 @@ class Login extends Component {
                 <Button
                   className={classes.submit}
                   type="submit"
-                  variant="raised"
+                  variant="contained"
                   color="primary"
                 >
                   Submit
                 </Button>
               </form>
-              <Typography variant="caption">
-                Hint: just hit submit, you'll be redirected to the dashboard
-              </Typography>
             </CustomPaper>
           </main>
         )}

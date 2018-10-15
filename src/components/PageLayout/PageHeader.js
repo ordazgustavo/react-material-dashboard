@@ -14,15 +14,14 @@ const styles = theme => ({
   },
   title: {
     marginBottom: theme.spacing.unit * 3,
-    color: theme.palette.primary.contrastText,
-    fontWeight: 'bold'
+    color: theme.palette.primary.contrastText
   }
 })
 
 const PageHeader = ({ classes, title, children }) => (
   <div className={classes.root}>
     <div>
-      <Typography className={classes.title} variant="title" component="h2">
+      <Typography className={classes.title} variant="h5">
         {title}
       </Typography>
     </div>

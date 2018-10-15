@@ -128,7 +128,7 @@ const AppToolbar = ({
       </IconButton>
       <Typography
         className={classes.title}
-        variant="title"
+        variant="h6"
         color="inherit"
         noWrap
       >

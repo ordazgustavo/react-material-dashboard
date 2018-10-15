@@ -10,7 +10,7 @@ const styles = theme => ({
 })
 
 const PageWrapper = ({ classes, children }) => (
-  <Typography className={classes.root} component="div">
+  <Typography className={classes.root} variant="body1" component="div">
     {children}
   </Typography>
 )
