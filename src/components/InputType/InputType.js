@@ -8,23 +8,15 @@ import {
   FormGroup,
   FormControlLabel,
   Checkbox,
+  RadioGroup,
+  Radio,
   FormHelperText
 } from '@material-ui/core'
 
-const Input = ({ field, form, ...props }) => {
+const InputType = ({ field, form, ...props }) => {
   const hasError =
     field && form ? form.errors[field.name] && form.touched[field.name] : false
   switch (props.type) {
-    case 'text':
-      return (
-        <TextField
-          helperText={hasError ? form.errors[field.name] : ''}
-          error={hasError}
-          {...field}
-          {...props}
-        />
-      )
-
     case 'select':
       return (
         <TextField
@@ -34,11 +26,13 @@ const Input = ({ field, form, ...props }) => {
           {...field}
           {...props}
         >
-          {props.native ? (
-            <option value="">None</option>
-          ) : (
-            <MenuItem value="">None</MenuItem>
-          )}
+          {props.defaultOption &&
+            props.native && <option value="">{props.defaultOption}</option>}
+          {props.defaultOption &&
+            !props.native && (
+              <MenuItem value="">{props.defaultOption}</MenuItem>
+            )}
+
           {props.options.map(
             option =>
               props.native ? (
@@ -60,6 +54,7 @@ const Input = ({ field, form, ...props }) => {
           control={
             <Checkbox
               checked={form.values[field.name]}
+              aria-label={props.label}
               {...field}
               {...props}
             />
@@ -69,13 +64,8 @@ const Input = ({ field, form, ...props }) => {
       )
 
     case 'checkbox-group':
-      console.log(props.className)
       return (
-        <FormControl
-          component="fieldset"
-          style={props.style}
-          className={props.className}
-        >
+        <FormControl component="fieldset" className={props.className}>
           <FormLabel component="legend">{props.label}</FormLabel>
           <FormGroup>
             {props.options.map(check => (
@@ -106,6 +96,27 @@ const Input = ({ field, form, ...props }) => {
         </FormControl>
       )
 
+    case 'radio':
+      return (
+        <FormControl component="fieldset" className={props.className}>
+          <FormLabel component="legend">{props.label}</FormLabel>
+          <RadioGroup
+            aria-label={props.label}
+            {...field}
+            value={form.values[field.name]}
+          >
+            {props.options.map(radio => (
+              <FormControlLabel
+                key={radio.value}
+                value={radio.value}
+                control={<Radio />}
+                label={radio.label}
+              />
+            ))}
+          </RadioGroup>
+        </FormControl>
+      )
+
     default:
       return (
         <TextField
@@ -117,9 +128,5 @@ const Input = ({ field, form, ...props }) => {
       )
   }
 }
-
-const InputType = props => (
-  <Input style={{ width: `${(props.size * 100) / 12}%` }} {...props} />
-)
 
 export default InputType

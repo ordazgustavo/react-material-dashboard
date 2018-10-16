@@ -10,7 +10,9 @@ const FormikDebugger = props =>
           borderRadius: '8px 8px 0 0'
         }}
       >
-        <h2 style={{ fontFamily: 'monospace', margin: 0 }}>Formik debugger</h2>
+        <h2 style={{ fontFamily: 'monospace', margin: 0 }}>
+          Formik debugger (development only)
+        </h2>
       </div>
       <pre
         style={{

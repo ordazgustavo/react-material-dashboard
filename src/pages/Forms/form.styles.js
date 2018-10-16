@@ -1,20 +1,9 @@
 export default theme => ({
-  container: {
-    display: 'flex',
-    flexDirection: 'column'
-  },
-  inputContainer: {
-    display: 'flex',
-    flexWrap: 'wrap'
-  },
-  buttonContainer: {
-    display: 'flex',
-    justifyContent: theme.direction === 'ltr' ? 'flex-end' : 'flex-start'
+  root: {
+    flexGrow: 1
   },
   textField: {
-    paddingRight: theme.spacing.unit
-  },
-  button: {
-    margin: theme.spacing.unit
+    margin: 0,
+    width: '100%'
   }
 })
