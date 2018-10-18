@@ -130,6 +130,7 @@ class Home extends Component {
               handleMobileMenuOpen={this.handleMobileMenuOpen}
               handleMobileMenuClose={this.handleMobileMenuClose}
               handleLogout={context.logout}
+              changeTheme={context.changeTheme}
             >
               <ProfileMenu
                 anchorEl={anchorEl}

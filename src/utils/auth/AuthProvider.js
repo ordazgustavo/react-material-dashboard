@@ -10,6 +10,7 @@ export default class AuthProvider extends Component {
   }
 
   state = {
+    theme: 'dark',
     id: 'lima123',
     name: 'Gustavo',
     email: 'me@ordazgustavo.com'
@@ -33,6 +34,12 @@ export default class AuthProvider extends Component {
     })
   }
 
+  changeTheme = () => {
+    this.setState(prevState => ({
+      theme: prevState.theme === 'light' ? 'dark' : 'light'
+    }))
+  }
+
   render() {
     const { children } = this.props
     return (
@@ -40,7 +47,8 @@ export default class AuthProvider extends Component {
         value={{
           user: this.state,
           authenticate: this.authenticate,
-          logout: this.logout
+          logout: this.logout,
+          changeTheme: this.changeTheme
         }}
       >
         {children}

@@ -16,6 +16,7 @@ import {
   Mail,
   Notifications,
   More,
+  InvertColors,
   AccountCircle,
   ExitToApp
 } from '@material-ui/icons'
@@ -115,6 +116,7 @@ const AppToolbar = ({
   handleProfileMenuOpen,
   handleMobileMenuOpen,
   handleLogout,
+  changeTheme,
   children
 }) => (
   <AppBar
@@ -166,6 +168,14 @@ const AppToolbar = ({
           >
             <Notifications />
           </Badge>
+        </IconButton>
+        <IconButton
+          aria-owns={isMenuOpen ? 'material-appbar' : null}
+          aria-haspopup="true"
+          onClick={changeTheme}
+          color="inherit"
+        >
+          <InvertColors />
         </IconButton>
         <IconButton
           aria-owns={isMenuOpen ? 'material-appbar' : null}
