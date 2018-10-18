@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
 import { navigate } from '@reach/router'
-import withStyles from '@material-ui/core/styles/withStyles'
-import Paper from '@material-ui/core/Paper'
-import Avatar from '@material-ui/core/Avatar'
-import Typography from '@material-ui/core/Typography'
-import TextField from '@material-ui/core/TextField'
-import Button from '@material-ui/core/Button'
-import LockIcon from '@material-ui/icons/Lock'
+import { withStyles } from '@material-ui/core/styles'
+import {
+  Paper,
+  Avatar,
+  Typography,
+  TextField,
+  Button
+} from '@material-ui/core'
+import { Lock } from '@material-ui/icons'
 
 import AuthContext from '../../utils/auth/AuthContext'
 
@@ -73,7 +75,7 @@ class Login extends Component {
           <main className={classes.layout}>
             <CustomPaper>
               <Avatar className={classes.avatar}>
-                <LockIcon />
+                <Lock />
               </Avatar>
               <Typography variant="h5">Sign in</Typography>
               <form

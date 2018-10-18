@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from 'react'
-import withStyles from '@material-ui/core/styles/withStyles'
+import { withStyles } from '@material-ui/core/styles'
 import { Grid, Paper } from '@material-ui/core'
-import Chart from '../../components/Charts/Charts'
 
+import Chart from '../../components/Charts/Charts'
 import PageHeader from '../../components/PageLayout/PageHeader'
 import PageWrapper from '../../components/PageLayout/PageWrapper'
 

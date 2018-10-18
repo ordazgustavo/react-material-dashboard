@@ -1,11 +1,7 @@
 import React from 'react'
 import { Link } from '@reach/router'
-
-import ListItem from '@material-ui/core/ListItem'
-import ListItemIcon from '@material-ui/core/ListItemIcon'
-import ListItemText from '@material-ui/core/ListItemText'
-import ExpandLess from '@material-ui/icons/ExpandLess'
-import ExpandMore from '@material-ui/icons/ExpandMore'
+import { ListItem, ListItemIcon, ListItemText } from '@material-ui/core'
+import { ExpandLess, ExpandMore } from '@material-ui/icons'
 
 const MenuItem = ({
   to,

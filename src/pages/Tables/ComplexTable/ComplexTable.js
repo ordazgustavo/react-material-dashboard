@@ -2,18 +2,20 @@ import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { withStyles } from '@material-ui/core/styles'
-import Table from '@material-ui/core/Table'
-import TableHead from '@material-ui/core/TableHead'
-import TableBody from '@material-ui/core/TableBody'
-import TableCell from '@material-ui/core/TableCell'
-import TableFooter from '@material-ui/core/TableFooter'
-import TablePagination from '@material-ui/core/TablePagination'
-import TableRow from '@material-ui/core/TableRow'
-import Paper from '@material-ui/core/Paper'
-import InputBase from '@material-ui/core/InputBase'
-import SearchIcon from '@material-ui/icons/Search'
-import InputAdornment from '@material-ui/core/InputAdornment'
-import Divider from '@material-ui/core/Divider'
+import {
+  Paper,
+  Table,
+  TableHead,
+  TableBody,
+  TableCell,
+  TableFooter,
+  TablePagination,
+  TableRow,
+  InputBase,
+  InputAdornment,
+  Divider
+} from '@material-ui/core'
+import { Search } from '@material-ui/icons'
 
 import TablePaginationActions from '../../../components/TablePagination/TablePagination'
 import PageWrapper from '../../../components/PageLayout/PageWrapper'
@@ -114,7 +116,7 @@ class Tables extends React.Component {
                   className={classNames(classes.margin, classes.textField)}
                   startAdornment={
                     <InputAdornment position="start">
-                      <SearchIcon />
+                      <Search />
                     </InputAdornment>
                   }
                   placeholder="Search..."
@@ -173,8 +175,7 @@ class Tables extends React.Component {
 }
 
 Tables.propTypes = {
-  classes: PropTypes.object.isRequired,
-  title: PropTypes.string.isRequired
+  classes: PropTypes.object.isRequired
 }
 
 export default withStyles(styles)(Tables)

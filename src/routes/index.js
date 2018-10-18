@@ -1,18 +1,20 @@
-import DashboardIcon from '@material-ui/icons/Dashboard'
-import InputIcon from '@material-ui/icons/Input'
-import TitleIcon from '@material-ui/icons/Title'
-import StarBorderIcon from '@material-ui/icons/StarBorder'
-import TableIcon from '@material-ui/icons/TableChart'
+import {
+  Dashboard,
+  Input,
+  Title,
+  StarBorder,
+  TableChart
+} from '@material-ui/icons'
 
 export default [
   {
     to: 'dashboard',
     label: 'Dashboard',
-    icon: DashboardIcon
+    icon: Dashboard
   },
   {
     label: 'Forms',
-    icon: InputIcon,
+    icon: Input,
     multiple: true,
     name: 'forms',
     options: [
@@ -20,19 +22,19 @@ export default [
         to: 'forms/regular-form',
         label: 'Regular Form',
         title: 'Regular Form',
-        icon: StarBorderIcon
+        icon: StarBorder
       },
       {
         to: 'forms/formik-form',
         label: 'Formik Form',
         title: 'Formik Form',
-        icon: StarBorderIcon
+        icon: StarBorder
       }
     ]
   },
   {
     label: 'Headings',
-    icon: TitleIcon,
+    icon: Title,
     multiple: true,
     name: 'headings',
     options: [
@@ -40,13 +42,13 @@ export default [
         to: 'headings',
         label: 'H1',
         title: 'H1',
-        icon: StarBorderIcon
+        icon: StarBorder
       }
     ]
   },
   {
     to: 'tables',
     label: 'Tables',
-    icon: TableIcon
+    icon: TableChart
   }
 ]

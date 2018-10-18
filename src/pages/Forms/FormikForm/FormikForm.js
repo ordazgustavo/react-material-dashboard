@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Formik, Form, Field, FieldArray } from 'formik'
-import withStyles from '@material-ui/core/styles/withStyles'
+import { withStyles } from '@material-ui/core/styles'
 import { Grid, Button } from '@material-ui/core'
 
 import { initialValues, validation } from './FormStructure'

@@ -1,20 +1,24 @@
 import React from 'react'
 import classNames from 'classnames'
-import withStyles from '@material-ui/core/styles/withStyles'
+import { withStyles } from '@material-ui/core/styles'
 import { fade } from '@material-ui/core/styles/colorManipulator'
-import AppBar from '@material-ui/core/AppBar'
-import Toolbar from '@material-ui/core/Toolbar'
-import Typography from '@material-ui/core/Typography'
-import IconButton from '@material-ui/core/IconButton'
-import Input from '@material-ui/core/Input'
-import Badge from '@material-ui/core/Badge'
-import MenuIcon from '@material-ui/icons/Menu'
-import SearchIcon from '@material-ui/icons/Search'
-import MailIcon from '@material-ui/icons/Mail'
-import NotificationsIcon from '@material-ui/icons/Notifications'
-import MoreIcon from '@material-ui/icons/More'
-import AccountCircle from '@material-ui/icons/AccountCircle'
-import LogoutIcon from '@material-ui/icons/ExitToApp'
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  IconButton,
+  Input,
+  Badge
+} from '@material-ui/core'
+import {
+  Menu,
+  Search,
+  Mail,
+  Notifications,
+  More,
+  AccountCircle,
+  ExitToApp
+} from '@material-ui/icons'
 
 const drawerWidth = 240
 
@@ -124,7 +128,7 @@ const AppToolbar = ({
         onClick={handleDrawerState}
         className={classNames(classes.menuButton, open && classes.hide)}
       >
-        <MenuIcon />
+        <Menu />
       </IconButton>
       <Typography
         className={classes.title}
@@ -136,7 +140,7 @@ const AppToolbar = ({
       </Typography>
       <div className={classes.search}>
         <div className={classes.searchIcon}>
-          <SearchIcon />
+          <Search />
         </div>
         <Input
           placeholder="Search…"
@@ -151,7 +155,7 @@ const AppToolbar = ({
       <div className={classes.sectionDesktop}>
         <IconButton color="inherit">
           <Badge className={classes.margin} badgeContent={4} color="secondary">
-            <MailIcon />
+            <Mail />
           </Badge>
         </IconButton>
         <IconButton color="inherit">
@@ -160,7 +164,7 @@ const AppToolbar = ({
             badgeContent={17}
             color="secondary"
           >
-            <NotificationsIcon />
+            <Notifications />
           </Badge>
         </IconButton>
         <IconButton
@@ -172,7 +176,7 @@ const AppToolbar = ({
           <AccountCircle />
         </IconButton>
         <IconButton onClick={handleLogout} color="inherit">
-          <LogoutIcon />
+          <ExitToApp />
         </IconButton>
       </div>
       <div className={classes.sectionMobile}>
@@ -181,7 +185,7 @@ const AppToolbar = ({
           onClick={handleMobileMenuOpen}
           color="inherit"
         >
-          <MoreIcon />
+          <More />
         </IconButton>
       </div>
     </Toolbar>

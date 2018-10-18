@@ -1,8 +1,7 @@
 import React, { Fragment } from 'react'
 import { Link, Router } from '@reach/router'
 import { withStyles } from '@material-ui/core/styles'
-import Tabs from '@material-ui/core/Tabs'
-import Tab from '@material-ui/core/Tab'
+import { Tabs, Tab } from '@material-ui/core'
 
 import PageHeader from '../../components/PageLayout/PageHeader'
 import SimpleTable from './SimpleTable/SimpleTable'

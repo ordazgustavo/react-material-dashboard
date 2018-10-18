@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import { Router } from '@reach/router'
-import withStyles from '@material-ui/core/styles/withStyles'
+import { withStyles } from '@material-ui/core/styles'
 import { Menu, MenuItem, IconButton, Badge } from '@material-ui/core'
-import MailIcon from '@material-ui/icons/Mail'
-import NotificationsIcon from '@material-ui/icons/Notifications'
-import AccountCircle from '@material-ui/icons/AccountCircle'
-import LogoutIcon from '@material-ui/icons/ExitToApp'
+import {
+  Mail,
+  Notifications,
+  AccountCircle,
+  ExitToApp
+} from '@material-ui/icons'
 
 import Dashboard from './Dashboard/Dashboard'
 import Forms from './Forms/Forms'
@@ -49,7 +51,7 @@ const MobileMenu = ({
     <MenuItem>
       <IconButton color="inherit">
         <Badge className={classes.margin} badgeContent={4} color="secondary">
-          <MailIcon />
+          <Mail />
         </Badge>
       </IconButton>
       <p>Messages</p>
@@ -57,7 +59,7 @@ const MobileMenu = ({
     <MenuItem>
       <IconButton color="inherit">
         <Badge className={classes.margin} badgeContent={11} color="secondary">
-          <NotificationsIcon />
+          <Notifications />
         </Badge>
       </IconButton>
       <p>Notifications</p>
@@ -70,7 +72,7 @@ const MobileMenu = ({
     </MenuItem>
     <MenuItem onClick={handleLogout}>
       <IconButton color="inherit">
-        <LogoutIcon />
+        <ExitToApp />
       </IconButton>
       <p>Sign out</p>
     </MenuItem>
