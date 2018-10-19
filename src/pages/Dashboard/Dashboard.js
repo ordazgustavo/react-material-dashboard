@@ -13,7 +13,8 @@ const styles = theme => ({
   paper: {
     ...theme.mixins.gutters(),
     paddingTop: theme.spacing.unit * 2,
-    paddingBottom: theme.spacing.unit * 2
+    paddingBottom: theme.spacing.unit * 2,
+    color: theme.palette.text.primary
   }
 })
 
@@ -54,6 +55,7 @@ class Dashboard extends Component {
           text: '$424,652',
           offsetX: 0,
           style: {
+            color: this.props.theme.palette.text.primary,
             fontSize: '24px',
             cssClass: 'apexcharts-yaxis-title'
           }
@@ -102,10 +104,16 @@ class Dashboard extends Component {
       options: {
         chart: {
           id: 'basic-bar',
-          height: 300
+          height: 300,
+          width: '100%'
         },
         xaxis: {
-          categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999]
+          categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999],
+          labels: {
+            style: {
+              colors: this.props.theme.palette.text.primary
+            }
+          }
         },
         grid: {
           show: false
@@ -113,9 +121,18 @@ class Dashboard extends Component {
         title: {
           text: 'Annual sales',
           style: {
+            color: this.props.theme.palette.text.primary,
             fontSize: '24px',
             cssClass: 'apexcharts-yaxis-title'
           }
+        },
+        dataLables: {
+          style: {
+            colors: this.props.theme.palette.text.primary
+          }
+        },
+        theme: {
+          palette: 'palette2'
         }
       },
       series: [
@@ -132,7 +149,12 @@ class Dashboard extends Component {
           height: 300
         },
         xaxis: {
-          categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999]
+          categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999],
+          labels: {
+            style: {
+              colors: this.props.theme.palette.text.primary
+            }
+          }
         },
         grid: {
           show: false
@@ -140,9 +162,13 @@ class Dashboard extends Component {
         title: {
           text: 'Annual sales',
           style: {
+            color: this.props.theme.palette.text.primary,
             fontSize: '24px',
             cssClass: 'apexcharts-yaxis-title'
           }
+        },
+        theme: {
+          palette: 'palette2'
         }
       },
       series: [
@@ -169,9 +195,13 @@ class Dashboard extends Component {
         title: {
           text: 'Progress',
           style: {
+            color: this.props.theme.palette.text.primary,
             fontSize: '24px',
             cssClass: 'apexcharts-yaxis-title'
           }
+        },
+        theme: {
+          palette: 'palette2'
         }
       },
       series: [70]
@@ -231,4 +261,4 @@ class Dashboard extends Component {
   }
 }
 
-export default withStyles(styles)(Dashboard)
+export default withStyles(styles, { withTheme: true })(Dashboard)

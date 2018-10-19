@@ -1,7 +1,14 @@
 import React from 'react'
 import { Link } from '@reach/router'
+import { withStyles } from '@material-ui/core/styles'
 import { ListItem, ListItemIcon, ListItemText } from '@material-ui/core'
 import { ExpandLess, ExpandMore } from '@material-ui/icons'
+
+const styles = theme => ({
+  root: {
+    color: theme.palette.text.primary
+  }
+})
 
 const MenuItem = ({
   to,
@@ -34,4 +41,4 @@ const MenuItem = ({
   )
 }
 
-export default MenuItem
+export default withStyles(styles)(MenuItem)

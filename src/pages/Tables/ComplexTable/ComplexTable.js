@@ -28,8 +28,7 @@ function createData(name, calories, fat) {
 
 const CustomTableCell = withStyles(theme => ({
   head: {
-    backgroundColor: theme.palette.grey['50'],
-    color: theme.palette.getContrastText(theme.palette.grey['50']),
+    backgroundColor: theme.palette.background.default,
     fontWeight: 'bold',
     paddingTop: 0,
     paddingBottom: 0
@@ -53,8 +52,7 @@ const styles = theme => ({
   filters: {
     display: 'flex',
     flexWrap: 'wrap',
-    backgroundColor: theme.palette.grey['50'],
-    color: theme.palette.getContrastText(theme.palette.grey['50']),
+    backgroundColor: theme.palette.background.default,
     borderTopLeftRadius: theme.shape.borderRadius,
     borderTopRightRadius: theme.shape.borderRadius
   },

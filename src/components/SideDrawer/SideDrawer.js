@@ -47,7 +47,7 @@ const SideDrawer = ({ classes, open, theme, routes, handleDrawerState }) => (
     open={open}
   >
     <div className={classes.toolbar}>
-      <Typography variant="subtitle1" color="inherit" noWrap>
+      <Typography variant="subtitle1" noWrap>
         Dashboard
       </Typography>
       <IconButton onClick={handleDrawerState}>
