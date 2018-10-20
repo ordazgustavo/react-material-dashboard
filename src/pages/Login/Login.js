@@ -56,7 +56,7 @@ class Login extends Component {
     e.preventDefault()
     const { email, password } = this.state
     authenticate(email, password)
-    navigate('/dashboard')
+    navigate('/')
   }
 
   handleChange = event => {

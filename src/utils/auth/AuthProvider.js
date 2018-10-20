@@ -10,7 +10,7 @@ export default class AuthProvider extends Component {
   }
 
   state = {
-    theme: 'dark',
+    theme: localStorage.theme,
     id: 'lima123',
     name: 'Gustavo',
     email: 'me@ordazgustavo.com'
@@ -35,9 +35,13 @@ export default class AuthProvider extends Component {
   }
 
   changeTheme = () => {
-    this.setState(prevState => ({
-      theme: prevState.theme === 'light' ? 'dark' : 'light'
-    }))
+    this.setState(prevState => {
+      const theme = prevState.theme === 'light' ? 'dark' : 'light'
+      localStorage.setItem('theme', theme)
+      return {
+        theme
+      }
+    })
   }
 
   render() {

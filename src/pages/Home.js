@@ -6,6 +6,7 @@ import {
   Mail,
   Notifications,
   AccountCircle,
+  InvertColors,
   ExitToApp
 } from '@material-ui/icons'
 
@@ -39,7 +40,8 @@ const MobileMenu = ({
   isMobileMenuOpen,
   handleMobileMenuClose,
   handleProfileMenuOpen,
-  handleLogout
+  handleLogout,
+  changeTheme
 }) => (
   <Menu
     anchorEl={mobileMoreAnchorEl}
@@ -69,6 +71,12 @@ const MobileMenu = ({
         <AccountCircle />
       </IconButton>
       <p>Profile</p>
+    </MenuItem>
+    <MenuItem onClick={changeTheme}>
+      <IconButton color="inherit">
+        <InvertColors />
+      </IconButton>
+      <p>Theme</p>
     </MenuItem>
     <MenuItem onClick={handleLogout}>
       <IconButton color="inherit">
@@ -144,6 +152,7 @@ class Home extends Component {
                 handleMobileMenuClose={this.handleMobileMenuClose}
                 handleProfileMenuOpen={this.handleProfileMenuOpen}
                 handleLogout={context.logout}
+                changeTheme={context.changeTheme}
               />
             </Toolbar>
             <SideDrawer
@@ -154,7 +163,7 @@ class Home extends Component {
             />
             <main className={classes.content}>
               <Router>
-                <Dashboard path="dashboard/*" title="Dashboard" />
+                <Dashboard path="/*" title="Dashboard" />
                 <Forms path="forms/*" title="Forms" />
                 <Headings path="headings/*" title="Headings" />
                 <Tables path="tables/*" title="Tables" />
