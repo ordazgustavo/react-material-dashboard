@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import { Link, Router } from '@reach/router'
 import { withStyles } from '@material-ui/core/styles'
-import { Tabs, Tab } from '@material-ui/core'
+import { Tabs, Tab, Slide } from '@material-ui/core'
 
 import PageHeader from '../../components/PageLayout/PageHeader'
 import SimpleTable from './SimpleTable/SimpleTable'
@@ -46,7 +46,11 @@ class Tables extends React.Component {
             onChange={this.handleChange}
             component="div"
           >
-            <CustomTab label="Simple Table" component={Link} to="./" />
+            <CustomTab
+              label="Simple Table"
+              component={Link}
+              to="simple-table"
+            />
             <CustomTab
               label="Complex Table"
               component={Link}
@@ -54,10 +58,12 @@ class Tables extends React.Component {
             />
           </CustomTabs>
         </PageHeader>
-        <Router>
-          <SimpleTable path="/" title="Simple Table" />
-          <ComplexTable path="complex-table" title="Complex Table" />
-        </Router>
+        <Slide direction="left" in mountOnEnter unmountOnExit>
+          <Router>
+            <SimpleTable path="simple-table" title="Simple Table" />
+            <ComplexTable path="complex-table" title="Complex Table" />
+          </Router>
+        </Slide>
       </Fragment>
     )
   }

@@ -47,7 +47,7 @@ export default [
     ]
   },
   {
-    to: 'tables',
+    to: 'tables/simple-table',
     label: 'Tables',
     icon: TableChart
   }
