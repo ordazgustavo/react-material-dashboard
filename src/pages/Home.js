@@ -10,10 +10,12 @@ import {
   ExitToApp
 } from '@material-ui/icons'
 
-import Dashboard from './Dashboard/Dashboard'
-import Forms from './Forms/Forms'
-import Headings from './Headings/Headings'
-import Tables from './Tables/Tables'
+import {
+  AsyncDashboard,
+  AsyncForms,
+  AsyncHeadings,
+  AsyncTables
+} from './index'
 
 import styles from './Home.styles'
 import routes from '../routes'
@@ -163,10 +165,10 @@ class Home extends Component {
             />
             <main className={classes.content}>
               <Router>
-                <Dashboard path="/*" title="Dashboard" />
-                <Forms path="forms/*" title="Forms" />
-                <Headings path="headings/*" title="Headings" />
-                <Tables path="tables/*" title="Tables" />
+                <AsyncDashboard path="/*" title="Dashboard" />
+                <AsyncForms path="forms/*" title="Forms" />
+                <AsyncHeadings path="headings/*" title="Headings" />
+                <AsyncTables path="tables/*" title="Tables" />
               </Router>
             </main>
           </div>

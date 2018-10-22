@@ -19,7 +19,7 @@
     "Dashboard"
   ],
   "dependencies": {
-    "@material-ui/core": "^3.2.1",
+    "@material-ui/core": "^3.3.0",
     "@material-ui/icons": "^3.0.1",
     "@reach/router": "^1.2.1",
     "apexcharts": "^2.1.4",
@@ -34,6 +34,7 @@
     "yup": "^0.26.6"
   },
   "scripts": {
+    "analyze": "source-map-explorer build/static/js/main.*",
     "docz:dev": "docz dev",
     "docz:build": "docz build",
     "start": "react-scripts start",
@@ -54,7 +55,8 @@
     "eslint-plugin-react": "^7.11.1",
     "husky": "^1.1.2",
     "lint-staged": "^7.3.0",
-    "prettier": "^1.14.3"
+    "prettier": "^1.14.3",
+    "source-map-explorer": "^1.6.0"
   },
   "husky": {
     "hooks": {

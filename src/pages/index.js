@@ -23,30 +23,3 @@ const AsyncTables = loadableFactory({
 })
 
 export { AsyncDashboard, AsyncForms, AsyncHeadings, AsyncTables }
-
-// export default [
-//   {
-//     to: 'dashboard',
-//     path: '/',
-//     title: 'Dashboard',
-//     component: Dashboard
-//   },
-//   {
-//     to: 'forms',
-//     path: 'forms/*',
-//     title: 'Forms',
-//     component: Forms
-//   },
-//   {
-//     to: 'headings',
-//     path: 'headings/*',
-//     title: 'Headings',
-//     component: Headings
-//   },
-//   {
-//     to: 'tables',
-//     path: 'tables/*',
-//     title: 'Tables',
-//     component: Tables
-//   }
-// ]
