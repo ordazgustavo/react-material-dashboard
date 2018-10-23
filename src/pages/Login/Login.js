@@ -11,28 +11,7 @@ import {
 import { LockRounded } from '@material-ui/icons'
 
 import AuthContext from '../../utils/auth/AuthContext'
-
-const styles = theme => ({
-  layout: {
-    width: '100vw',
-    height: '100vh',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'flex-start'
-  },
-  avatar: {
-    margin: theme.spacing.unit,
-    backgroundColor: theme.palette.secondary.main
-  },
-  loginForm: {
-    display: 'flex',
-    flexDirection: 'column',
-    width: '100%'
-  },
-  submit: {
-    marginTop: theme.spacing.unit * 3
-  }
-})
+import styles from './Login.styles'
 
 const CustomPaper = withStyles(theme => ({
   root: {

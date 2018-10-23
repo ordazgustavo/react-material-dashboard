@@ -1,13 +1,15 @@
 import React from 'react'
+import { withStyles } from '@material-ui/core/styles'
 
-const FormikDebugger = props =>
+const FormikDebugger = ({ classes, theme, ...rest }) =>
   process.env.NODE_ENV === 'development' ? (
     <div style={{ margin: '1rem 0', width: '100%' }}>
       <div
         style={{
-          background: '#ccc',
+          background: theme.palette.background.default,
           padding: '1rem',
-          borderRadius: '8px 8px 0 0'
+          borderTopLeftRadius: theme.shape.borderRadius,
+          borderTopRightRadius: theme.shape.borderRadius
         }}
       >
         <h2 style={{ fontFamily: 'monospace', margin: 0 }}>
@@ -16,15 +18,18 @@ const FormikDebugger = props =>
       </div>
       <pre
         style={{
-          background: '#f6f8fa',
+          background:
+            theme.palette.type === 'light'
+              ? theme.palette.grey['200']
+              : theme.palette.grey.A700,
           fontSize: '1rem',
           padding: '1rem',
           margin: 0
         }}
       >
-        <strong>props</strong> = {JSON.stringify(props, null, 2)}
+        <strong>props</strong> = {JSON.stringify(rest, null, 2)}
       </pre>
     </div>
   ) : null
 
-export default FormikDebugger
+export default withStyles(null, { withTheme: true })(FormikDebugger)

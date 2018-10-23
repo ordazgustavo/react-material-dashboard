@@ -4,7 +4,7 @@ import { withStyles } from '@material-ui/core/styles'
 import { TextField, Button } from '@material-ui/core'
 
 import formStructure from './FormStructure'
-import styles from '../form.styles'
+import { formStyles } from '../Forms.styles'
 
 class RegularForm extends Component {
   static propTypes = {
@@ -54,4 +54,4 @@ class RegularForm extends Component {
   }
 }
 
-export default withStyles(styles)(RegularForm)
+export default withStyles(formStyles)(RegularForm)

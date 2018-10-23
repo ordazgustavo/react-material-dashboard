@@ -17,7 +17,7 @@ const actionsStyles = theme => ({
   }
 })
 
-class TablePaginationActions extends React.Component {
+class CustomTablePagination extends React.Component {
   handleFirstPageButtonClick = event => {
     this.props.onChangePage(event, 0)
   }
@@ -91,7 +91,7 @@ class TablePaginationActions extends React.Component {
   }
 }
 
-TablePaginationActions.propTypes = {
+CustomTablePagination.propTypes = {
   classes: PropTypes.object.isRequired,
   count: PropTypes.number.isRequired,
   onChangePage: PropTypes.func.isRequired,
@@ -102,4 +102,4 @@ TablePaginationActions.propTypes = {
 
 export default withStyles(actionsStyles, {
   withTheme: true
-})(TablePaginationActions)
+})(CustomTablePagination)

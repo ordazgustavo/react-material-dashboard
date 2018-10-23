@@ -17,50 +17,16 @@ import {
 } from '@material-ui/core'
 import { SearchRounded } from '@material-ui/icons'
 
-import TablePaginationActions from '../../../components/TablePagination/TablePagination'
+import CustomTablePagination from '../../../components/Table/Pagination/Pagination'
 import PageWrapper from '../../../components/PageLayout/PageWrapper'
+import { CustomTableCell } from '../../../components/Table/Table'
+import styles from './ComplexTable.styles'
 
 let counter = 0
 function createData(name, calories, fat) {
   counter += 1
   return { id: counter, name, calories, fat }
 }
-
-const CustomTableCell = withStyles(theme => ({
-  head: {
-    backgroundColor: theme.palette.background.default,
-    fontWeight: 'bold',
-    paddingTop: 0,
-    paddingBottom: 0
-  },
-  body: {
-    fontSize: 14
-  }
-}))(TableCell)
-
-const styles = theme => ({
-  root: {
-    width: '100%',
-    marginTop: theme.spacing.unit * 3,
-    overflowX: 'auto'
-  },
-  table: {
-    minWidth: 500
-  },
-  filters: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    backgroundColor: theme.palette.background.default,
-    borderTopLeftRadius: theme.shape.borderRadius,
-    borderTopRightRadius: theme.shape.borderRadius
-  },
-  margin: {
-    margin: theme.spacing.unit
-  },
-  textField: {
-    width: '100%'
-  }
-})
 
 class Tables extends React.Component {
   state = {
@@ -153,7 +119,7 @@ class Tables extends React.Component {
                     page={page}
                     onChangePage={this.handleChangePage}
                     onChangeRowsPerPage={this.handleChangeRowsPerPage}
-                    ActionsComponent={TablePaginationActions}
+                    ActionsComponent={CustomTablePagination}
                   />
                 </TableRow>
               </TableFooter>

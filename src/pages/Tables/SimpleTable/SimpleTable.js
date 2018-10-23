@@ -11,42 +11,14 @@ import {
 } from '@material-ui/core'
 
 import PageWrapper from '../../../components/PageLayout/PageWrapper'
+import { CustomTableCell } from '../../../components/Table/Table'
+import styles from './SimpleTable.styles'
 
 let counter = 0
 function createData(data) {
   counter += 1
   return { id: counter, ...data }
 }
-
-const CustomTableCell = withStyles(theme => ({
-  head: {
-    backgroundColor: theme.palette.background.default,
-    fontWeight: 'bold',
-    paddingTop: 0,
-    paddingBottom: 0
-  },
-  body: {
-    fontSize: 14
-  }
-}))(TableCell)
-
-const styles = theme => ({
-  root: {
-    width: '100%',
-    marginTop: theme.spacing.unit * 3,
-    overflowX: 'auto',
-    borderRadius: theme.shape.borderRadius
-  },
-  table: {
-    minWidth: 500
-  },
-  margin: {
-    margin: theme.spacing.unit
-  },
-  textField: {
-    width: '100%'
-  }
-})
 
 const SimpleTable = ({ classes }) => {
   const cols = [

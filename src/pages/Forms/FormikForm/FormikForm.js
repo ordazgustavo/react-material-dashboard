@@ -7,7 +7,7 @@ import { Grid, Button } from '@material-ui/core'
 import { initialValues, validation } from './FormStructure'
 import InputType from '../../../components/InputType/InputType'
 import FormikDebugger from '../../../utils/debuggers/FormikDebugger'
-import styles from '../form.styles'
+import { formStyles } from '../Forms.styles'
 
 const FormikForm = ({ classes }) => (
   <Formik
@@ -167,4 +167,4 @@ FormikForm.propTypes = {
   classes: PropTypes.objectOf(PropTypes.string).isRequired
 }
 
-export default withStyles(styles)(FormikForm)
+export default withStyles(formStyles)(FormikForm)

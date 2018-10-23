@@ -10,7 +10,7 @@ const styles = theme => ({
     color: theme.palette.primary.contrastText,
     padding: theme.spacing.unit * 3,
     paddingBottom: 0,
-    marginTop: theme.spacing.unit * 8
+    marginTop: theme.mixins.toolbar.minHeight
   },
   title: {
     marginBottom: theme.spacing.unit * 3,

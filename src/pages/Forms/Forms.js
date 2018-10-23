@@ -7,15 +7,7 @@ import PageHeader from '../../components/PageLayout/PageHeader'
 import PageWrapper from '../../components/PageLayout/PageWrapper'
 import RegularForm from './RegularForm/RegularForm'
 import FormikForm from './FormikForm/FormikForm'
-
-const styles = theme => ({
-  root: {
-    width: '100%',
-    marginTop: theme.spacing.unit * 3,
-    padding: theme.spacing.unit * 3,
-    overflowX: 'auto'
-  }
-})
+import { formsPageStyles } from './Forms.styles'
 
 const Forms = ({ classes, title }) => (
   <Fragment>
@@ -31,4 +23,4 @@ const Forms = ({ classes, title }) => (
   </Fragment>
 )
 
-export default withStyles(styles)(Forms)
+export default withStyles(formsPageStyles)(Forms)

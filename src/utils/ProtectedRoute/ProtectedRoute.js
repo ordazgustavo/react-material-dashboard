@@ -10,6 +10,11 @@ const theme = createMuiTheme({
   },
   shape: {
     borderRadius: 8
+  },
+  mixins: {
+    toolbar: {
+      minHeight: 48
+    }
   }
 })
 
@@ -22,6 +27,11 @@ const darkTheme = createMuiTheme({
   },
   shape: {
     borderRadius: 8
+  },
+  mixins: {
+    toolbar: {
+      minHeight: 48
+    }
   }
 })
 
