@@ -33,14 +33,12 @@ const CustomTableCell = withStyles(theme => ({
 const styles = theme => ({
   root: {
     width: '100%',
-    marginTop: theme.spacing.unit * 3
+    marginTop: theme.spacing.unit * 3,
+    overflowX: 'auto',
+    borderRadius: theme.shape.borderRadius
   },
   table: {
     minWidth: 500
-  },
-  tableWrapper: {
-    overflowX: 'auto',
-    borderRadius: theme.shape.borderRadius
   },
   margin: {
     margin: theme.spacing.unit
@@ -75,30 +73,28 @@ const SimpleTable = ({ classes }) => {
   return (
     <PageWrapper>
       <Paper className={classes.root}>
-        <div className={classes.tableWrapper}>
-          <Table className={classes.table}>
-            <TableHead>
-              <TableRow>
-                {cols.map(({ label, ...rest }) => (
-                  <CustomTableCell key={rest.id} {...rest}>
-                    {label}
-                  </CustomTableCell>
-                ))}
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {rows.map(row => (
-                <TableRow key={row.id}>
-                  <TableCell component="th" scope="row">
-                    {row.name}
-                  </TableCell>
-                  <TableCell numeric>{row.calories}</TableCell>
-                  <TableCell numeric>{row.fat}</TableCell>
-                </TableRow>
+        <Table className={classes.table}>
+          <TableHead>
+            <TableRow>
+              {cols.map(({ label, ...rest }) => (
+                <CustomTableCell key={rest.id} {...rest}>
+                  {label}
+                </CustomTableCell>
               ))}
-            </TableBody>
-          </Table>
-        </div>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {rows.map(row => (
+              <TableRow key={row.id}>
+                <TableCell component="th" scope="row">
+                  {row.name}
+                </TableCell>
+                <TableCell numeric>{row.calories}</TableCell>
+                <TableCell numeric>{row.fat}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
       </Paper>
     </PageWrapper>
   )

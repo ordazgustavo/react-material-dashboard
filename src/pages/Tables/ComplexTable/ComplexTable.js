@@ -41,13 +41,11 @@ const CustomTableCell = withStyles(theme => ({
 const styles = theme => ({
   root: {
     width: '100%',
-    marginTop: theme.spacing.unit * 3
+    marginTop: theme.spacing.unit * 3,
+    overflowX: 'auto'
   },
   table: {
     minWidth: 500
-  },
-  tableWrapper: {
-    overflowX: 'auto'
   },
   filters: {
     display: 'flex',
@@ -107,64 +105,59 @@ class Tables extends React.Component {
       <Fragment>
         <PageWrapper>
           <Paper className={classes.root}>
-            <div className={classes.tableWrapper}>
-              <form className={classes.filters} onSubmit={this.handleSubmit}>
-                <InputBase
-                  id="adornment-password"
-                  className={classNames(classes.margin, classes.textField)}
-                  startAdornment={
-                    <InputAdornment position="start">
-                      <Search />
-                    </InputAdornment>
-                  }
-                  placeholder="Search..."
-                />
-              </form>
-              <Divider />
-              <Table className={classes.table}>
-                <TableHead>
-                  <TableRow>
-                    <CustomTableCell>Dessert (100g serving)</CustomTableCell>
-                    <CustomTableCell numeric>Calories</CustomTableCell>
-                    <CustomTableCell numeric>Protein (g)</CustomTableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {rows
-                    .slice(
-                      page * rowsPerPage,
-                      page * rowsPerPage + rowsPerPage
-                    )
-                    .map(row => (
-                      <TableRow key={row.id}>
-                        <TableCell component="th" scope="row">
-                          {row.name}
-                        </TableCell>
-                        <TableCell numeric>{row.calories}</TableCell>
-                        <TableCell numeric>{row.fat}</TableCell>
-                      </TableRow>
-                    ))}
-                  {emptyRows > 0 && (
-                    <TableRow style={{ height: 48 * emptyRows }}>
-                      <TableCell colSpan={6} />
+            <form className={classes.filters} onSubmit={this.handleSubmit}>
+              <InputBase
+                id="adornment-password"
+                className={classNames(classes.margin, classes.textField)}
+                startAdornment={
+                  <InputAdornment position="start">
+                    <Search />
+                  </InputAdornment>
+                }
+                placeholder="Search..."
+              />
+            </form>
+            <Divider />
+            <Table className={classes.table}>
+              <TableHead>
+                <TableRow>
+                  <CustomTableCell>Dessert (100g serving)</CustomTableCell>
+                  <CustomTableCell numeric>Calories</CustomTableCell>
+                  <CustomTableCell numeric>Protein (g)</CustomTableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {rows
+                  .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                  .map(row => (
+                    <TableRow key={row.id}>
+                      <TableCell component="th" scope="row">
+                        {row.name}
+                      </TableCell>
+                      <TableCell numeric>{row.calories}</TableCell>
+                      <TableCell numeric>{row.fat}</TableCell>
                     </TableRow>
-                  )}
-                </TableBody>
-                <TableFooter>
-                  <TableRow>
-                    <TablePagination
-                      colSpan={3}
-                      count={rows.length}
-                      rowsPerPage={rowsPerPage}
-                      page={page}
-                      onChangePage={this.handleChangePage}
-                      onChangeRowsPerPage={this.handleChangeRowsPerPage}
-                      ActionsComponent={TablePaginationActions}
-                    />
+                  ))}
+                {emptyRows > 0 && (
+                  <TableRow style={{ height: 48 * emptyRows }}>
+                    <TableCell colSpan={6} />
                   </TableRow>
-                </TableFooter>
-              </Table>
-            </div>
+                )}
+              </TableBody>
+              <TableFooter>
+                <TableRow>
+                  <TablePagination
+                    colSpan={3}
+                    count={rows.length}
+                    rowsPerPage={rowsPerPage}
+                    page={page}
+                    onChangePage={this.handleChangePage}
+                    onChangeRowsPerPage={this.handleChangeRowsPerPage}
+                    ActionsComponent={TablePaginationActions}
+                  />
+                </TableRow>
+              </TableFooter>
+            </Table>
           </Paper>
         </PageWrapper>
       </Fragment>

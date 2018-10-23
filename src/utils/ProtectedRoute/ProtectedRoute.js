@@ -7,6 +7,9 @@ import AuthContext from '../auth/AuthContext'
 const theme = createMuiTheme({
   typography: {
     useNextVariants: true
+  },
+  shape: {
+    borderRadius: 8
   }
 })
 
@@ -16,6 +19,9 @@ const darkTheme = createMuiTheme({
   },
   palette: {
     type: 'dark'
+  },
+  shape: {
+    borderRadius: 8
   }
 })
 

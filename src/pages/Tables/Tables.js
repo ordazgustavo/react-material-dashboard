@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import { Link, Router } from '@reach/router'
+import { Link, Router, Location } from '@reach/router'
 import { withStyles } from '@material-ui/core/styles'
 import { Tabs, Tab, Slide } from '@material-ui/core'
 
@@ -58,12 +58,22 @@ class Tables extends React.Component {
             />
           </CustomTabs>
         </PageHeader>
-        <Slide direction="left" in mountOnEnter unmountOnExit>
-          <Router>
-            <SimpleTable path="simple-table" title="Simple Table" />
-            <ComplexTable path="complex-table" title="Complex Table" />
-          </Router>
-        </Slide>
+        <Location>
+          {({ location }) => (
+            <Slide
+              key={location.key}
+              direction="left"
+              in
+              mountOnEnter
+              unmountOnExit
+            >
+              <Router location={location}>
+                <SimpleTable path="simple-table" title="Simple Table" />
+                <ComplexTable path="complex-table" title="Complex Table" />
+              </Router>
+            </Slide>
+          )}
+        </Location>
       </Fragment>
     )
   }

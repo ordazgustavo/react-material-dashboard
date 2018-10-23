@@ -138,7 +138,7 @@ const AppToolbar = ({
         color="inherit"
         noWrap
       >
-        Material-UI
+        React Material Dashboard
       </Typography>
       <div className={classes.search}>
         <div className={classes.searchIcon}>
