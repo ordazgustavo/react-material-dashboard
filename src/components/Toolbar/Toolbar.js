@@ -11,14 +11,14 @@ import {
   Badge
 } from '@material-ui/core'
 import {
-  Menu,
-  Search,
-  Mail,
-  Notifications,
-  More,
-  InvertColors,
-  AccountCircle,
-  ExitToApp
+  MenuRounded,
+  SearchRounded,
+  MailRounded,
+  NotificationsRounded,
+  MoreRounded,
+  InvertColorsRounded,
+  AccountCircleRounded,
+  ExitToAppRounded
 } from '@material-ui/icons'
 
 const drawerWidth = 240
@@ -130,7 +130,7 @@ const AppToolbar = ({
         onClick={handleDrawerState}
         className={classNames(classes.menuButton, open && classes.hide)}
       >
-        <Menu />
+        <MenuRounded />
       </IconButton>
       <Typography
         className={classes.title}
@@ -142,7 +142,7 @@ const AppToolbar = ({
       </Typography>
       <div className={classes.search}>
         <div className={classes.searchIcon}>
-          <Search />
+          <SearchRounded />
         </div>
         <Input
           placeholder="Search…"
@@ -157,7 +157,7 @@ const AppToolbar = ({
       <div className={classes.sectionDesktop}>
         <IconButton color="inherit">
           <Badge className={classes.margin} badgeContent={4} color="secondary">
-            <Mail />
+            <MailRounded />
           </Badge>
         </IconButton>
         <IconButton color="inherit">
@@ -166,7 +166,7 @@ const AppToolbar = ({
             badgeContent={17}
             color="secondary"
           >
-            <Notifications />
+            <NotificationsRounded />
           </Badge>
         </IconButton>
         <IconButton
@@ -175,7 +175,7 @@ const AppToolbar = ({
           onClick={changeTheme}
           color="inherit"
         >
-          <InvertColors />
+          <InvertColorsRounded />
         </IconButton>
         <IconButton
           aria-owns={isMenuOpen ? 'material-appbar' : null}
@@ -183,10 +183,10 @@ const AppToolbar = ({
           onClick={handleProfileMenuOpen}
           color="inherit"
         >
-          <AccountCircle />
+          <AccountCircleRounded />
         </IconButton>
         <IconButton onClick={handleLogout} color="inherit">
-          <ExitToApp />
+          <ExitToAppRounded />
         </IconButton>
       </div>
       <div className={classes.sectionMobile}>
@@ -195,7 +195,7 @@ const AppToolbar = ({
           onClick={handleMobileMenuOpen}
           color="inherit"
         >
-          <More />
+          <MoreRounded />
         </IconButton>
       </div>
     </Toolbar>

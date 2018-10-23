@@ -3,11 +3,11 @@ import { Router } from '@reach/router'
 import { withStyles } from '@material-ui/core/styles'
 import { Menu, MenuItem, IconButton, Badge } from '@material-ui/core'
 import {
-  Mail,
-  Notifications,
-  AccountCircle,
-  InvertColors,
-  ExitToApp
+  MailRounded,
+  NotificationsRounded,
+  AccountCircleRounded,
+  InvertColorsRounded,
+  ExitToAppRounded
 } from '@material-ui/icons'
 
 import {
@@ -55,7 +55,7 @@ const MobileMenu = ({
     <MenuItem>
       <IconButton color="inherit">
         <Badge className={classes.margin} badgeContent={4} color="secondary">
-          <Mail />
+          <MailRounded />
         </Badge>
       </IconButton>
       <p>Messages</p>
@@ -63,26 +63,26 @@ const MobileMenu = ({
     <MenuItem>
       <IconButton color="inherit">
         <Badge className={classes.margin} badgeContent={11} color="secondary">
-          <Notifications />
+          <NotificationsRounded />
         </Badge>
       </IconButton>
       <p>Notifications</p>
     </MenuItem>
     <MenuItem onClick={handleProfileMenuOpen}>
       <IconButton color="inherit">
-        <AccountCircle />
+        <AccountCircleRounded />
       </IconButton>
       <p>Profile</p>
     </MenuItem>
     <MenuItem onClick={changeTheme}>
       <IconButton color="inherit">
-        <InvertColors />
+        <InvertColorsRounded />
       </IconButton>
       <p>Theme</p>
     </MenuItem>
     <MenuItem onClick={handleLogout}>
       <IconButton color="inherit">
-        <ExitToApp />
+        <ExitToAppRounded />
       </IconButton>
       <p>Sign out</p>
     </MenuItem>

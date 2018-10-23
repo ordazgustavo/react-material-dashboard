@@ -15,7 +15,7 @@ import {
   InputAdornment,
   Divider
 } from '@material-ui/core'
-import { Search } from '@material-ui/icons'
+import { SearchRounded } from '@material-ui/icons'
 
 import TablePaginationActions from '../../../components/TablePagination/TablePagination'
 import PageWrapper from '../../../components/PageLayout/PageWrapper'
@@ -111,7 +111,7 @@ class Tables extends React.Component {
                 className={classNames(classes.margin, classes.textField)}
                 startAdornment={
                   <InputAdornment position="start">
-                    <Search />
+                    <SearchRounded />
                   </InputAdornment>
                 }
                 placeholder="Search..."

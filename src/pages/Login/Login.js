@@ -8,7 +8,7 @@ import {
   TextField,
   Button
 } from '@material-ui/core'
-import { Lock } from '@material-ui/icons'
+import { LockRounded } from '@material-ui/icons'
 
 import AuthContext from '../../utils/auth/AuthContext'
 
@@ -75,7 +75,7 @@ class Login extends Component {
           <main className={classes.layout}>
             <CustomPaper>
               <Avatar className={classes.avatar}>
-                <Lock />
+                <LockRounded />
               </Avatar>
               <Typography variant="h5">Sign in</Typography>
               <form

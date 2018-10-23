@@ -1,20 +1,20 @@
 import {
-  Dashboard,
-  Input,
-  Title,
-  StarBorder,
-  TableChart
+  DashboardRounded,
+  InputRounded,
+  TitleRounded,
+  StarRounded,
+  TableChartRounded
 } from '@material-ui/icons'
 
 export default [
   {
     to: '/',
     label: 'Dashboard',
-    icon: Dashboard
+    icon: DashboardRounded
   },
   {
     label: 'Forms',
-    icon: Input,
+    icon: InputRounded,
     multiple: true,
     name: 'forms',
     options: [
@@ -22,19 +22,19 @@ export default [
         to: 'forms/regular-form',
         label: 'Regular Form',
         title: 'Regular Form',
-        icon: StarBorder
+        icon: StarRounded
       },
       {
         to: 'forms/formik-form',
         label: 'Formik Form',
         title: 'Formik Form',
-        icon: StarBorder
+        icon: StarRounded
       }
     ]
   },
   {
     label: 'Headings',
-    icon: Title,
+    icon: TitleRounded,
     multiple: true,
     name: 'headings',
     options: [
@@ -42,13 +42,13 @@ export default [
         to: 'headings',
         label: 'H1',
         title: 'H1',
-        icon: StarBorder
+        icon: StarRounded
       }
     ]
   },
   {
     to: 'tables/simple-table',
     label: 'Tables',
-    icon: TableChart
+    icon: TableChartRounded
   }
 ]

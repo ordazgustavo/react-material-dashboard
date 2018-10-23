@@ -3,10 +3,10 @@ import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
 import { IconButton } from '@material-ui/core'
 import {
-  FirstPage,
-  KeyboardArrowLeft,
-  KeyboardArrowRight,
-  LastPage
+  FirstPageRounded,
+  KeyboardArrowLeftRounded,
+  KeyboardArrowRightRounded,
+  LastPageRounded
 } from '@material-ui/icons'
 
 const actionsStyles = theme => ({
@@ -47,7 +47,11 @@ class TablePaginationActions extends React.Component {
           disabled={page === 0}
           aria-label="First Page"
         >
-          {theme.direction === 'rtl' ? <LastPage /> : <FirstPage />}
+          {theme.direction === 'rtl' ? (
+            <LastPageRounded />
+          ) : (
+            <FirstPageRounded />
+          )}
         </IconButton>
         <IconButton
           onClick={this.handleBackButtonClick}
@@ -55,9 +59,9 @@ class TablePaginationActions extends React.Component {
           aria-label="Previous Page"
         >
           {theme.direction === 'rtl' ? (
-            <KeyboardArrowRight />
+            <KeyboardArrowRightRounded />
           ) : (
-            <KeyboardArrowLeft />
+            <KeyboardArrowLeftRounded />
           )}
         </IconButton>
         <IconButton
@@ -66,9 +70,9 @@ class TablePaginationActions extends React.Component {
           aria-label="Next Page"
         >
           {theme.direction === 'rtl' ? (
-            <KeyboardArrowLeft />
+            <KeyboardArrowLeftRounded />
           ) : (
-            <KeyboardArrowRight />
+            <KeyboardArrowRightRounded />
           )}
         </IconButton>
         <IconButton
@@ -76,7 +80,11 @@ class TablePaginationActions extends React.Component {
           disabled={page >= Math.ceil(count / rowsPerPage) - 1}
           aria-label="Last Page"
         >
-          {theme.direction === 'rtl' ? <FirstPage /> : <LastPage />}
+          {theme.direction === 'rtl' ? (
+            <FirstPageRounded />
+          ) : (
+            <LastPageRounded />
+          )}
         </IconButton>
       </div>
     )

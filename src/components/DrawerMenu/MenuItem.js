@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from '@reach/router'
 import { withStyles } from '@material-ui/core/styles'
 import { ListItem, ListItemIcon, ListItemText } from '@material-ui/core'
-import { ExpandLess, ExpandMore } from '@material-ui/icons'
+import { ExpandLessRounded, ExpandMoreRounded } from '@material-ui/icons'
 
 const styles = theme => ({
   root: {
@@ -28,7 +28,7 @@ const MenuItem = ({
           <Icon />
         </ListItemIcon>
         <ListItemText inset primary={label} />
-        {open ? <ExpandLess /> : <ExpandMore />}
+        {open ? <ExpandLessRounded /> : <ExpandMoreRounded />}
       </ListItem>
     )
   }

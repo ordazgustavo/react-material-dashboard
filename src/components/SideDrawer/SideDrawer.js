@@ -2,7 +2,7 @@ import React from 'react'
 import classNames from 'classnames'
 import { withStyles } from '@material-ui/core/styles'
 import { Typography, Drawer, Divider, IconButton } from '@material-ui/core'
-import { ChevronRight, ChevronLeft } from '@material-ui/icons'
+import { ChevronRightRounded, ChevronLeftRounded } from '@material-ui/icons'
 
 import DrawerMenu from '../DrawerMenu/DrawerMenu'
 
@@ -51,7 +51,11 @@ const SideDrawer = ({ classes, open, theme, routes, handleDrawerState }) => (
         Dashboard
       </Typography>
       <IconButton onClick={handleDrawerState}>
-        {theme.direction === 'rtl' ? <ChevronRight /> : <ChevronLeft />}
+        {theme.direction === 'rtl' ? (
+          <ChevronRightRounded />
+        ) : (
+          <ChevronLeftRounded />
+        )}
       </IconButton>
     </div>
     <Divider />
