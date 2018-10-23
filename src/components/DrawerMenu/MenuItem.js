@@ -13,6 +13,7 @@ const styles = theme => ({
 const MenuItem = ({
   to,
   clickHandler,
+  selectHandler,
   multiple,
   name,
   icon: Icon,
@@ -32,7 +33,13 @@ const MenuItem = ({
     )
   }
   return (
-    <ListItem button component={Link} to={to} {...rest}>
+    <ListItem
+      button
+      onClick={() => selectHandler(to)}
+      component={Link}
+      to={to}
+      {...rest}
+    >
       <ListItemIcon>
         <Icon />
       </ListItemIcon>

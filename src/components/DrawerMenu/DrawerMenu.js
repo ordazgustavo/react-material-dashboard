@@ -1,7 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import classNames from 'classnames'
 import { withStyles } from '@material-ui/core/styles'
-import { List, Collapse } from '@material-ui/core'
+import { List, Collapse, Divider } from '@material-ui/core'
 
 import MenuItem from './MenuItem'
 
@@ -13,12 +14,16 @@ const styles = theme => ({
   },
   nested: {
     paddingLeft: theme.spacing.unit * 4
+  },
+  menuOpen: {
+    backgroundColor: theme.palette.background.default
   }
 })
 
 class NestedList extends React.Component {
   state = {
-    isOpen: {}
+    isOpen: {},
+    selectedRoute: ''
   }
 
   handleClick = name => {
@@ -30,20 +35,31 @@ class NestedList extends React.Component {
     }))
   }
 
+  markSelected = route => {
+    this.setState({ selectedRoute: route })
+  }
+
   render() {
     const { classes, routes } = this.props
-    const { isOpen } = this.state
+    const { isOpen, selectedRoute } = this.state
 
     return (
       <div className={classes.root}>
         <List component="nav">
           {routes.length
             ? routes.map(route => (
-                <React.Fragment key={route.label}>
+                <div
+                  key={route.label}
+                  className={classNames(
+                    isOpen[route.name] && classes.menuOpen
+                  )}
+                >
                   <MenuItem
                     {...route}
                     open={isOpen[route.name]}
+                    selected={selectedRoute === route.to}
                     clickHandler={this.handleClick}
+                    selectHandler={this.markSelected}
                   />
                   {route.multiple && (
                     <Collapse
@@ -57,12 +73,15 @@ class NestedList extends React.Component {
                             key={nested.label}
                             {...nested}
                             className={classes.nested}
+                            selectHandler={this.markSelected}
+                            selected={selectedRoute === nested.to}
                           />
                         ))}
                       </List>
                     </Collapse>
                   )}
-                </React.Fragment>
+                  <Divider />
+                </div>
               ))
             : null}
         </List>
