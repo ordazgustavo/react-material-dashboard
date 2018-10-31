@@ -10,7 +10,7 @@ const styles = theme => ({
   }
 })
 
-const MenuItem = ({
+function MenuItem({
   to,
   clickHandler,
   selectHandler,
@@ -20,7 +20,7 @@ const MenuItem = ({
   label,
   open,
   ...rest
-}) => {
+}) {
   if (multiple) {
     return (
       <ListItem button onClick={() => clickHandler(name)} {...rest}>

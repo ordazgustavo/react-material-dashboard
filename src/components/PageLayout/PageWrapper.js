@@ -9,10 +9,12 @@ const styles = theme => ({
   }
 })
 
-const PageWrapper = ({ classes, children }) => (
-  <Typography className={classes.root} variant="body1" component="div">
-    {children}
-  </Typography>
-)
+function PageWrapper({ classes, children }) {
+  return (
+    <Typography className={classes.root} variant="body1" component="div">
+      {children}
+    </Typography>
+  )
+}
 
 export default withStyles(styles)(PageWrapper)

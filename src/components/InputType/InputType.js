@@ -13,7 +13,7 @@ import {
   FormHelperText
 } from '@material-ui/core'
 
-const InputType = ({ field, form, ...props }) => {
+function InputType({ field, form, ...props }) {
   const hasError =
     field && form ? form.errors[field.name] && form.touched[field.name] : false
   switch (props.type) {

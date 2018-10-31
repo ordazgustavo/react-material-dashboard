@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Loading = ({ pastDelay, error, timedOut, retry }) => {
+function Loading({ pastDelay, error, timedOut, retry }) {
   if (error) {
     return (
       <div>

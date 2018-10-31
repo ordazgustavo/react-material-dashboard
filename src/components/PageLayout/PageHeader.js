@@ -18,15 +18,16 @@ const styles = theme => ({
   }
 })
 
-const PageHeader = ({ classes, title, children }) => (
-  <div className={classes.root}>
-    <div>
-      <Typography className={classes.title} variant="h5">
-        {title}
-      </Typography>
+function PageHeader({ classes, title, children }) {
+  return (
+    <div className={classes.root}>
+      <div>
+        <Typography className={classes.title} variant="h5">
+          {title}
+        </Typography>
+      </div>
+      {children}
     </div>
-    {children}
-  </div>
-)
-
+  )
+}
 export default withStyles(styles)(PageHeader)

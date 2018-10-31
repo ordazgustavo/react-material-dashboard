@@ -13,4 +13,4 @@ const CustomTableCell = withStyles(theme => ({
   }
 }))(TableCell)
 
-export { CustomTableCell }
+export default CustomTableCell

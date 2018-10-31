@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { withStyles } from '@material-ui/core/styles'
@@ -20,78 +20,64 @@ const styles = theme => ({
   }
 })
 
-class NestedList extends React.Component {
-  state = {
-    isOpen: {},
-    selectedRoute: ''
+function NestedList({ classes, routes }) {
+  const [isOpen, setIsOpen] = useState({})
+  const [selectedRoute, setSelectedRoute] = useState('')
+
+  function handleClick(name) {
+    setIsOpen({
+      ...isOpen,
+      [name]: !isOpen[name]
+    })
   }
 
-  handleClick = name => {
-    this.setState(state => ({
-      isOpen: {
-        ...state.isOpen,
-        [name]: !state.isOpen[name]
-      }
-    }))
-  }
-
-  markSelected = route => {
-    this.setState({ selectedRoute: route })
-  }
-
-  render() {
-    const { classes, routes } = this.props
-    const { isOpen, selectedRoute } = this.state
-
-    return (
-      <div className={classes.root}>
-        <List component="nav">
-          {routes.length
-            ? routes.map(route => (
-                <div
-                  key={route.label}
-                  className={classNames(
-                    isOpen[route.name] && classes.menuOpen
-                  )}
-                >
-                  <MenuItem
-                    {...route}
-                    open={isOpen[route.name]}
-                    selected={selectedRoute === route.to}
-                    clickHandler={this.handleClick}
-                    selectHandler={this.markSelected}
-                  />
-                  {route.multiple && (
-                    <Collapse
-                      in={isOpen[route.name]}
-                      timeout="auto"
-                      unmountOnExit
-                    >
-                      <List component="div" disablePadding>
-                        {route.options.map(nested => (
-                          <MenuItem
-                            key={nested.label}
-                            {...nested}
-                            className={classes.nested}
-                            selectHandler={this.markSelected}
-                            selected={selectedRoute === nested.to}
-                          />
-                        ))}
-                      </List>
-                    </Collapse>
-                  )}
-                  <Divider />
-                </div>
-              ))
-            : null}
-        </List>
-      </div>
-    )
-  }
+  return (
+    <div className={classes.root}>
+      <List component="nav">
+        {routes.length
+          ? routes.map(route => (
+              <div
+                key={route.label}
+                className={classNames(isOpen[route.name] && classes.menuOpen)}
+              >
+                <MenuItem
+                  {...route}
+                  open={isOpen[route.name]}
+                  selected={selectedRoute === route.to}
+                  clickHandler={handleClick}
+                  selectHandler={setSelectedRoute}
+                />
+                {route.multiple && (
+                  <Collapse
+                    in={isOpen[route.name]}
+                    timeout="auto"
+                    unmountOnExit
+                  >
+                    <List component="div" disablePadding>
+                      {route.options.map(nested => (
+                        <MenuItem
+                          key={nested.label}
+                          {...nested}
+                          className={classes.nested}
+                          selectHandler={setSelectedRoute}
+                          selected={selectedRoute === nested.to}
+                        />
+                      ))}
+                    </List>
+                  </Collapse>
+                )}
+                <Divider />
+              </div>
+            ))
+          : null}
+      </List>
+    </div>
+  )
 }
 
 NestedList.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.objectOf(PropTypes.string).isRequired,
+  routes: PropTypes.arrayOf(PropTypes.object).isRequired
 }
 
 export default withStyles(styles)(NestedList)

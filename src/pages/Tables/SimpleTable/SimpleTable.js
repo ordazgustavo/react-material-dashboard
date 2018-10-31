@@ -11,7 +11,7 @@ import {
 } from '@material-ui/core'
 
 import PageWrapper from '../../../components/PageLayout/PageWrapper'
-import { CustomTableCell } from '../../../components/Table/Table'
+import CustomTableCell from '../../../components/Table/Table'
 import styles from './SimpleTable.styles'
 
 let counter = 0
@@ -20,7 +20,7 @@ function createData(data) {
   return { id: counter, ...data }
 }
 
-const SimpleTable = ({ classes }) => {
+function SimpleTable({ classes }) {
   const cols = [
     createData({ label: 'Dessert (100g serving)' }),
     createData({ label: 'Calories', numeric: true }),
@@ -73,8 +73,7 @@ const SimpleTable = ({ classes }) => {
 }
 
 SimpleTable.propTypes = {
-  classes: PropTypes.object.isRequired,
-  title: PropTypes.string.isRequired
+  classes: PropTypes.objectOf(PropTypes.string).isRequired
 }
 
 export default withStyles(styles)(SimpleTable)

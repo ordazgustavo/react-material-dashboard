@@ -17,89 +17,85 @@ const actionsStyles = theme => ({
   }
 })
 
-class CustomTablePagination extends React.Component {
-  handleFirstPageButtonClick = event => {
-    this.props.onChangePage(event, 0)
+function CustomTablePagination({
+  classes,
+  count,
+  page,
+  rowsPerPage,
+  onChangePage,
+  theme
+}) {
+  function handleFirstPageButtonClick(e) {
+    onChangePage(e, 0)
   }
-
-  handleBackButtonClick = event => {
-    this.props.onChangePage(event, this.props.page - 1)
+  function handleBackButtonClick(e) {
+    onChangePage(e, page - 1)
   }
-
-  handleNextButtonClick = event => {
-    this.props.onChangePage(event, this.props.page + 1)
+  function handleNextButtonClick(e) {
+    onChangePage(e, page + 1)
   }
-
-  handleLastPageButtonClick = event => {
-    this.props.onChangePage(
-      event,
-      Math.max(0, Math.ceil(this.props.count / this.props.rowsPerPage) - 1)
-    )
+  function handleLastPageButtonClick(e) {
+    onChangePage(e, Math.max(0, Math.ceil(count / rowsPerPage) - 1))
   }
-
-  render() {
-    const { classes, count, page, rowsPerPage, theme } = this.props
-
-    return (
-      <div className={classes.root}>
-        <IconButton
-          onClick={this.handleFirstPageButtonClick}
-          disabled={page === 0}
-          aria-label="First Page"
-        >
-          {theme.direction === 'rtl' ? (
-            <LastPageRounded />
-          ) : (
-            <FirstPageRounded />
-          )}
-        </IconButton>
-        <IconButton
-          onClick={this.handleBackButtonClick}
-          disabled={page === 0}
-          aria-label="Previous Page"
-        >
-          {theme.direction === 'rtl' ? (
-            <KeyboardArrowRightRounded />
-          ) : (
-            <KeyboardArrowLeftRounded />
-          )}
-        </IconButton>
-        <IconButton
-          onClick={this.handleNextButtonClick}
-          disabled={page >= Math.ceil(count / rowsPerPage) - 1}
-          aria-label="Next Page"
-        >
-          {theme.direction === 'rtl' ? (
-            <KeyboardArrowLeftRounded />
-          ) : (
-            <KeyboardArrowRightRounded />
-          )}
-        </IconButton>
-        <IconButton
-          onClick={this.handleLastPageButtonClick}
-          disabled={page >= Math.ceil(count / rowsPerPage) - 1}
-          aria-label="Last Page"
-        >
-          {theme.direction === 'rtl' ? (
-            <FirstPageRounded />
-          ) : (
-            <LastPageRounded />
-          )}
-        </IconButton>
-      </div>
-    )
-  }
+  return (
+    <div className={classes.root}>
+      <IconButton
+        onClick={handleFirstPageButtonClick}
+        disabled={page === 0}
+        aria-label="First Page"
+      >
+        {theme.direction === 'rtl' ? (
+          <LastPageRounded />
+        ) : (
+          <FirstPageRounded />
+        )}
+      </IconButton>
+      <IconButton
+        onClick={handleBackButtonClick}
+        disabled={page === 0}
+        aria-label="Previous Page"
+      >
+        {theme.direction === 'rtl' ? (
+          <KeyboardArrowRightRounded />
+        ) : (
+          <KeyboardArrowLeftRounded />
+        )}
+      </IconButton>
+      <IconButton
+        onClick={handleNextButtonClick}
+        disabled={page >= Math.ceil(count / rowsPerPage) - 1}
+        aria-label="Next Page"
+      >
+        {theme.direction === 'rtl' ? (
+          <KeyboardArrowLeftRounded />
+        ) : (
+          <KeyboardArrowRightRounded />
+        )}
+      </IconButton>
+      <IconButton
+        onClick={handleLastPageButtonClick}
+        disabled={page >= Math.ceil(count / rowsPerPage) - 1}
+        aria-label="Last Page"
+      >
+        {theme.direction === 'rtl' ? (
+          <FirstPageRounded />
+        ) : (
+          <LastPageRounded />
+        )}
+      </IconButton>
+    </div>
+  )
 }
 
 CustomTablePagination.propTypes = {
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.objectOf(PropTypes.string).isRequired,
   count: PropTypes.number.isRequired,
   onChangePage: PropTypes.func.isRequired,
   page: PropTypes.number.isRequired,
   rowsPerPage: PropTypes.number.isRequired,
-  theme: PropTypes.object.isRequired
+  theme: PropTypes.objectOf(PropTypes.any).isRequired
 }
 
 export default withStyles(actionsStyles, {
   withTheme: true
-})(CustomTablePagination)
+})(React.memo(CustomTablePagination))

@@ -38,29 +38,33 @@ const styles = theme => ({
   }
 })
 
-const SideDrawer = ({ classes, open, theme, routes, handleDrawerState }) => (
-  <Drawer
-    variant="permanent"
-    classes={{
-      paper: classNames(classes.drawerPaper, !open && classes.drawerPaperClose)
-    }}
-    open={open}
-  >
-    <div className={classes.toolbar}>
-      <Typography variant="subtitle1" noWrap>
-        Dashboard
-      </Typography>
-      <IconButton onClick={handleDrawerState}>
-        {theme.direction === 'rtl' ? (
-          <ChevronRightRounded />
-        ) : (
-          <ChevronLeftRounded />
-        )}
-      </IconButton>
-    </div>
-    <Divider />
-    <DrawerMenu routes={routes} />
-  </Drawer>
-)
-
+function SideDrawer({ classes, open, theme, routes, handleDrawerState }) {
+  return (
+    <Drawer
+      variant="permanent"
+      classes={{
+        paper: classNames(
+          classes.drawerPaper,
+          !open && classes.drawerPaperClose
+        )
+      }}
+      open={open}
+    >
+      <div className={classes.toolbar}>
+        <Typography variant="subtitle1" noWrap>
+          Dashboard
+        </Typography>
+        <IconButton onClick={handleDrawerState}>
+          {theme.direction === 'rtl' ? (
+            <ChevronRightRounded />
+          ) : (
+            <ChevronLeftRounded />
+          )}
+        </IconButton>
+      </div>
+      <Divider />
+      <DrawerMenu routes={routes} />
+    </Drawer>
+  )
+}
 export default withStyles(styles)(SideDrawer)
