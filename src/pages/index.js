@@ -1,25 +1,11 @@
-import Loadable from 'react-loadable'
-import Loading from '../components/Loading/Loading'
+import React from 'react'
 
-const loadableFactory = opts =>
-  Loadable({
-    loading: Loading,
-    delay: 500,
-    timeout: 10000,
-    ...opts
-  })
+import Dashboard from './Dashboard/Dashboard'
 
-const AsyncDashboard = loadableFactory({
-  loader: () => import('./Dashboard/Dashboard')
-})
-const AsyncForms = loadableFactory({
-  loader: () => import('./Forms/Forms')
-})
-const AsyncHeadings = loadableFactory({
-  loader: () => import('./Headings/Headings')
-})
-const AsyncTables = loadableFactory({
-  loader: () => import('./Tables/Tables')
-})
+// Disabled because of a bug that causes apexcharts not to render initially
+// const AsyncDashboard = React.lazy(() => import('./Dashboard/Dashboard'))
+const AsyncForms = React.lazy(() => import('./Forms/Forms'))
+const AsyncHeadings = React.lazy(() => import('./Headings/Headings'))
+const AsyncTables = React.lazy(() => import('./Tables/Tables'))
 
-export { AsyncDashboard, AsyncForms, AsyncHeadings, AsyncTables }
+export { Dashboard, AsyncForms, AsyncHeadings, AsyncTables }

@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { withStyles } from '@material-ui/core/styles'
 import { Grid, Paper } from '@material-ui/core'
 
@@ -10,7 +10,7 @@ import { spark, bar, line, radialBar } from './charts'
 
 function Dashboard({ title, classes, theme }) {
   return (
-    <Fragment>
+    <>
       <PageHeader title={title} />
       <PageWrapper>
         <div className={classes.root}>
@@ -53,7 +53,7 @@ function Dashboard({ title, classes, theme }) {
           </Grid>
         </div>
       </PageWrapper>
-    </Fragment>
+    </>
   )
 }
 

@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { Suspense, useState, useContext } from 'react'
 import { Router } from '@reach/router'
 import { withStyles } from '@material-ui/core/styles'
 import { Menu, MenuItem, IconButton, Badge } from '@material-ui/core'
@@ -10,12 +10,7 @@ import {
   ExitToAppRounded
 } from '@material-ui/icons'
 
-import {
-  AsyncDashboard,
-  AsyncForms,
-  AsyncHeadings,
-  AsyncTables
-} from './index'
+import { Dashboard, AsyncForms, AsyncHeadings, AsyncTables } from './index'
 
 import styles from './Home.styles'
 import routes from '../routes'
@@ -164,12 +159,14 @@ function Home({ classes, theme }) {
         handleDrawerState={handleDrawerState}
       />
       <main className={classes.content}>
-        <Router>
-          <AsyncDashboard path="/*" title="Dashboard" />
-          <AsyncForms path="forms/*" title="Forms" />
-          <AsyncHeadings path="headings/*" title="Headings" />
-          <AsyncTables path="tables/*" title="Tables" />
-        </Router>
+        <Suspense fallback={<div>Loading...</div>}>
+          <Router>
+            <Dashboard path="/*" title="Dashboard" />
+            <AsyncForms path="forms/*" title="Forms" />
+            <AsyncHeadings path="headings/*" title="Headings" />
+            <AsyncTables path="tables/*" title="Tables" />
+          </Router>
+        </Suspense>
       </main>
     </div>
   )
