@@ -1,4 +1,4 @@
-import React, { Component, useState, useContext } from 'react'
+import React, { useState, useContext } from 'react'
 import { navigate } from '@reach/router'
 import { withStyles } from '@material-ui/core/styles'
 import {
