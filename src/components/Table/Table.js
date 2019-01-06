@@ -1,9 +1,9 @@
 import { withStyles } from '@material-ui/core/styles'
 import { TableCell } from '@material-ui/core'
 
-const CustomTableCell = withStyles(theme => ({
+const CustomTableCell = withStyles(({ palette }) => ({
   head: {
-    backgroundColor: theme.palette.background.default,
+    backgroundColor: palette.background.default,
     fontWeight: 'bold',
     paddingTop: 0,
     paddingBottom: 0

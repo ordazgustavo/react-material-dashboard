@@ -2,10 +2,10 @@ import React from 'react'
 import { withStyles } from '@material-ui/core/styles'
 import { Typography } from '@material-ui/core'
 
-const styles = theme => ({
+const styles = ({ spacing }) => ({
   root: {
-    margin: theme.spacing.unit * 3,
-    marginTop: theme.spacing.unit * 6
+    margin: spacing.unit * 3,
+    marginTop: spacing.unit * 6
   }
 })
 

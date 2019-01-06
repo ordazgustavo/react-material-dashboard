@@ -1,57 +1,79 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import React from 'react'
 import { withStyles } from '@material-ui/core/styles'
-import { TextField, Button } from '@material-ui/core'
+import { TextField, Button, Grid } from '@material-ui/core'
 
-import formStructure from './FormStructure'
+import { useFormInput } from '../../../utils/hooks'
 import { formStyles } from '../Forms.styles'
 
-class RegularForm extends Component {
-  static propTypes = {
-    classes: PropTypes.objectOf(PropTypes.string).isRequired
-  }
+function RegularForm({ classes }) {
+  const firstName = useFormInput('')
+  const lastName = useFormInput('')
+  const email = useFormInput('')
+  const phone = useFormInput('')
 
-  state = {}
-
-  handleSubmit = event => {
+  function handleSubmit(event) {
     event.preventDefault()
     // Do Something
   }
 
-  handleChange = e => this.setState({ [e.target.name]: e.target.value })
-
-  render() {
-    const { classes } = this.props
-
-    return (
-      <form className={classes.container} onSubmit={this.handleSubmit}>
-        <div className={classes.inputContainer}>
-          {formStructure.map(element => (
+  return (
+    <form className={classes.container} onSubmit={handleSubmit}>
+      <div className={classes.inputContainer}>
+        <Grid container spacing={24}>
+          <Grid item xs={6}>
             <TextField
-              key={element.name}
-              id={element.name}
-              value={this.state[element.name]}
-              onChange={this.handleChange}
-              margin={element.margin}
+              name="firstName"
+              label="Name"
+              margin="normal"
+              required
               className={classes.textField}
-              style={{ width: `${(element.size * 100) / 12}%` }}
-              {...element}
+              {...firstName}
             />
-          ))}
-        </div>
-        <div className={classes.buttonContainer}>
-          <Button
-            type="submit"
-            className={classes.button}
-            variant="contained"
-            color="primary"
-          >
-            submit
-          </Button>
-        </div>
-      </form>
-    )
-  }
+          </Grid>
+          <Grid item xs={6}>
+            <TextField
+              name="lastName"
+              label="Last Name"
+              margin="normal"
+              required
+              className={classes.textField}
+              {...lastName}
+            />
+          </Grid>
+          <Grid item xs={6}>
+            <TextField
+              name="email"
+              label="Email"
+              margin="normal"
+              required
+              className={classes.textField}
+              {...email}
+            />
+          </Grid>
+          <Grid item xs={6}>
+            <TextField
+              name="phone"
+              label="Phone Number"
+              margin="normal"
+              required
+              className={classes.textField}
+              {...phone}
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <Button
+              type="submit"
+              className={classes.button}
+              variant="contained"
+              color="primary"
+            >
+              submit
+            </Button>
+          </Grid>
+        </Grid>
+      </div>
+    </form>
+  )
 }
 
 export default withStyles(formStyles)(RegularForm)

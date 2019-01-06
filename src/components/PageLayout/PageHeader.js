@@ -2,19 +2,19 @@ import React from 'react'
 import { withStyles } from '@material-ui/core/styles'
 import { Typography } from '@material-ui/core'
 
-const styles = theme => ({
+const styles = ({ palette, spacing, mixins }) => ({
   root: {
     display: 'flex',
     flexDirection: 'column',
-    backgroundColor: theme.palette.primary.main,
-    color: theme.palette.primary.contrastText,
-    padding: theme.spacing.unit * 3,
+    backgroundColor: palette.primary.main,
+    color: palette.primary.contrastText,
+    padding: spacing.unit * 3,
     paddingBottom: 0,
-    marginTop: theme.mixins.toolbar.minHeight
+    marginTop: mixins.toolbar.minHeight
   },
   title: {
-    marginBottom: theme.spacing.unit * 3,
-    color: theme.palette.primary.contrastText
+    marginBottom: spacing.unit * 3,
+    color: palette.primary.contrastText
   }
 })
 
@@ -30,4 +30,5 @@ function PageHeader({ classes, title, children }) {
     </div>
   )
 }
+
 export default withStyles(styles)(PageHeader)

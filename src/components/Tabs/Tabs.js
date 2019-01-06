@@ -1,21 +1,21 @@
 import { withStyles } from '@material-ui/core/styles'
 import { Tabs, Tab } from '@material-ui/core'
 
-const CustomTabs = withStyles(theme => ({
+const CustomTabs = withStyles(({ spacing, shape }) => ({
   root: {
-    minHeight: theme.spacing.unit * 5
+    minHeight: spacing.unit * 5
   },
   indicator: {
     background: '#fff',
-    borderTopLeftRadius: theme.shape.borderRadius,
-    borderTopRightRadius: theme.shape.borderRadius,
+    borderTopLeftRadius: shape.borderRadius,
+    borderTopRightRadius: shape.borderRadius,
     height: 3
   }
 }))(Tabs)
 
-const CustomTab = withStyles(theme => ({
+const CustomTab = withStyles(({ spacing }) => ({
   root: {
-    minHeight: theme.spacing.unit * 5
+    minHeight: spacing.unit * 5
   }
 }))(Tab)
 

@@ -22,7 +22,8 @@ module.exports = {
   rules: {
     'react/jsx-filename-extension': 0,
     'function-paren-newline': 0,
-    'react/no-did-update-set-state': 0
+    'react/no-did-update-set-state': 0,
+    'import/prefer-default-export': 0
   },
   globals: {
     jest: true,

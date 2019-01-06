@@ -1,13 +1,13 @@
-export const formsPageStyles = theme => ({
+export const formsPageStyles = ({ spacing }) => ({
   root: {
     width: '100%',
-    marginTop: theme.spacing.unit * 3,
-    padding: theme.spacing.unit * 3,
+    marginTop: spacing.unit * 3,
+    padding: spacing.unit * 3,
     overflowX: 'auto'
   }
 })
 
-export const formStyles = theme => ({
+export const formStyles = () => ({
   root: {
     flexGrow: 1
   },

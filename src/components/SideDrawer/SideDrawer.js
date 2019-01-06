@@ -6,35 +6,32 @@ import { ChevronRightRounded, ChevronLeftRounded } from '@material-ui/icons'
 
 import DrawerMenu from '../DrawerMenu/DrawerMenu'
 
-const drawerWidth = 240
+import { drawerWidthMultiplier } from '../../utils/constants'
 
-const styles = theme => ({
+const styles = ({ transitions, spacing, mixins }) => ({
   drawerPaper: {
     position: 'relative',
     whiteSpace: 'nowrap',
-    width: drawerWidth,
-    transition: theme.transitions.create('width', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen
+    width: spacing.unit * drawerWidthMultiplier,
+    transition: transitions.create('width', {
+      easing: transitions.easing.sharp,
+      duration: transitions.duration.enteringScreen
     })
   },
   drawerPaperClose: {
     overflowX: 'hidden',
-    transition: theme.transitions.create('width', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen
+    transition: transitions.create('width', {
+      easing: transitions.easing.sharp,
+      duration: transitions.duration.leavingScreen
     }),
-    width: theme.spacing.unit * 7,
-    [theme.breakpoints.up('sm')]: {
-      width: theme.spacing.unit * 9
-    }
+    width: spacing.unit * 8.5
   },
   toolbar: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
     padding: '0 8px',
-    ...theme.mixins.toolbar
+    ...mixins.toolbar
   }
 })
 
@@ -63,8 +60,9 @@ function SideDrawer({ classes, open, theme, routes, handleDrawerState }) {
         </IconButton>
       </div>
       <Divider />
-      <DrawerMenu routes={routes} />
+      <DrawerMenu routes={routes} isDrawerOpen={open} />
     </Drawer>
   )
 }
+
 export default withStyles(styles)(SideDrawer)

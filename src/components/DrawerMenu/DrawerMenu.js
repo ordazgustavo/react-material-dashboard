@@ -6,21 +6,21 @@ import { List, Collapse, Divider } from '@material-ui/core'
 
 import MenuItem from './MenuItem'
 
-const styles = theme => ({
+const styles = ({ palette, spacing }) => ({
   root: {
     width: '100%',
     maxWidth: 360,
-    backgroundColor: theme.palette.background.paper
+    backgroundColor: palette.background.paper
   },
   nested: {
-    paddingLeft: theme.spacing.unit * 4
+    paddingLeft: spacing.unit * 4
   },
   menuOpen: {
-    backgroundColor: theme.palette.background.default
+    backgroundColor: palette.background.default
   }
 })
 
-function NestedList({ classes, routes }) {
+function NestedList({ classes, routes, isDrawerOpen }) {
   const [isOpen, setIsOpen] = useState({})
   const [selectedRoute, setSelectedRoute] = useState('')
 
@@ -33,7 +33,7 @@ function NestedList({ classes, routes }) {
 
   return (
     <div className={classes.root}>
-      <List component="nav">
+      <List component="nav" disablePadding>
         {routes.length
           ? routes.map(route => (
               <div
@@ -46,6 +46,12 @@ function NestedList({ classes, routes }) {
                   selected={selectedRoute === route.to}
                   clickHandler={handleClick}
                   selectHandler={setSelectedRoute}
+                  isDrawerOpen={isDrawerOpen}
+                  caption={
+                    route.multiple
+                      ? route.options.map(opt => opt.title).join(', ')
+                      : null
+                  }
                 />
                 {route.multiple && (
                   <Collapse
@@ -53,14 +59,16 @@ function NestedList({ classes, routes }) {
                     timeout="auto"
                     unmountOnExit
                   >
-                    <List component="div" disablePadding>
+                    <List component="div">
                       {route.options.map(nested => (
                         <MenuItem
                           key={nested.label}
                           {...nested}
+                          child
                           className={classes.nested}
                           selectHandler={setSelectedRoute}
                           selected={selectedRoute === nested.to}
+                          isDrawerOpen={isDrawerOpen}
                         />
                       ))}
                     </List>
@@ -77,7 +85,8 @@ function NestedList({ classes, routes }) {
 
 NestedList.propTypes = {
   classes: PropTypes.objectOf(PropTypes.string).isRequired,
-  routes: PropTypes.arrayOf(PropTypes.object).isRequired
+  routes: PropTypes.arrayOf(PropTypes.object).isRequired,
+  isDrawerOpen: PropTypes.bool.isRequired
 }
 
 export default withStyles(styles)(NestedList)

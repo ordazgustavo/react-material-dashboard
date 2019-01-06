@@ -9,11 +9,11 @@ import {
   LastPageRounded
 } from '@material-ui/icons'
 
-const actionsStyles = theme => ({
+const actionsStyles = ({ palette, spacing }) => ({
   root: {
     flexShrink: 0,
-    color: theme.palette.text.secondary,
-    marginLeft: theme.spacing.unit * 2.5
+    color: palette.text.secondary,
+    marginLeft: spacing.unit * 2.5
   }
 })
 

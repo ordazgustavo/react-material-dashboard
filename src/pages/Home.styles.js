@@ -1,6 +1,6 @@
 const drawerWidth = 240
 
-const styles = theme => ({
+const styles = ({ transitions, spacing, breakpoints, mixins, palette }) => ({
   root: {
     flexGrow: 1,
     height: '100vh',
@@ -13,29 +13,29 @@ const styles = theme => ({
     position: 'relative',
     whiteSpace: 'nowrap',
     width: drawerWidth,
-    transition: theme.transitions.create('width', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen
+    transition: transitions.create('width', {
+      easing: transitions.easing.sharp,
+      duration: transitions.duration.enteringScreen
     })
   },
   drawerPaperClose: {
     overflowX: 'hidden',
-    transition: theme.transitions.create('width', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen
+    transition: transitions.create('width', {
+      easing: transitions.easing.sharp,
+      duration: transitions.duration.leavingScreen
     }),
-    width: theme.spacing.unit * 7,
-    [theme.breakpoints.up('sm')]: {
-      width: theme.spacing.unit * 9
+    width: spacing.unit * 7,
+    [breakpoints.up('sm')]: {
+      width: spacing.unit * 9
     }
   },
   pageHeader: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
-    backgroundColor: theme.palette.primary.main,
-    color: theme.palette.primary.contrastText,
-    padding: theme.spacing.unit * 3,
+    backgroundColor: palette.primary.main,
+    color: palette.primary.contrastText,
+    padding: spacing.unit * 3,
     minHeight: '150px'
   },
   toolbar: {
@@ -43,11 +43,11 @@ const styles = theme => ({
     alignItems: 'center',
     justifyContent: 'space-between',
     padding: '0 8px',
-    ...theme.mixins.toolbar
+    ...mixins.toolbar
   },
   content: {
     flexGrow: 1,
-    backgroundColor: theme.palette.background.default,
+    backgroundColor: palette.background.default,
     overflow: 'auto'
   },
   grow: {

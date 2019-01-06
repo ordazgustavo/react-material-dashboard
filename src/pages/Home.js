@@ -93,7 +93,7 @@ function MobileMenu({
 }
 
 function Home({ classes, theme }) {
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(true)
   const [anchorEl, setAnchorEl] = useState(null)
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null)
 

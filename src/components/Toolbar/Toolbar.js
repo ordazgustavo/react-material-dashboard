@@ -26,6 +26,7 @@ const AppToolbar = ({
   classes,
   isMenuOpen,
   open,
+  isTop,
   handleDrawerState,
   handleProfileMenuOpen,
   handleMobileMenuOpen,

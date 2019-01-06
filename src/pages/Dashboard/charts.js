@@ -1,4 +1,4 @@
-export const spark = theme => ({
+export const spark = ({ palette }) => ({
   options: {
     chart: {
       type: 'area',
@@ -33,7 +33,7 @@ export const spark = theme => ({
       text: '$424,652',
       offsetX: 0,
       style: {
-        color: theme.palette.text.primary,
+        color: palette.text.primary,
         fontSize: '24px',
         cssClass: 'apexcharts-yaxis-title'
       }

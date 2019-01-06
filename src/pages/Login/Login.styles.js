@@ -1,4 +1,4 @@
-const styles = theme => ({
+const styles = ({ spacing, palette }) => ({
   layout: {
     width: '100vw',
     height: '100vh',
@@ -7,8 +7,8 @@ const styles = theme => ({
     alignItems: 'flex-start'
   },
   avatar: {
-    margin: theme.spacing.unit,
-    backgroundColor: theme.palette.secondary.main
+    margin: spacing.unit,
+    backgroundColor: palette.secondary.main
   },
   loginForm: {
     display: 'flex',
@@ -16,7 +16,7 @@ const styles = theme => ({
     width: '100%'
   },
   submit: {
-    marginTop: theme.spacing.unit * 3
+    marginTop: spacing.unit * 3
   }
 })
 

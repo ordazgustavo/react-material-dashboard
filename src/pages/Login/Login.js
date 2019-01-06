@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useContext } from 'react'
 import { navigate } from '@reach/router'
 import { withStyles } from '@material-ui/core/styles'
 import {
@@ -11,28 +11,20 @@ import {
 import { LockRounded } from '@material-ui/icons'
 
 import AuthContext from '../../utils/auth/AuthContext'
+import { useFormInput } from '../../utils/hooks'
 import styles from './Login.styles'
 
-const LoginPaper = withStyles(theme => ({
+const LoginPaper = withStyles(({ spacing }) => ({
   root: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    marginTop: theme.spacing.unit * 8,
-    padding: theme.spacing.unit * 4,
+    marginTop: spacing.unit * 8,
+    padding: spacing.unit * 4,
     width: '90%',
     maxWidth: 400
   }
 }))(Paper)
-
-function useFormInput(initialValue) {
-  const [value, setValue] = useState(initialValue)
-
-  return {
-    value,
-    onChange: e => setValue(e.target.value)
-  }
-}
 
 function Login({ classes }) {
   const email = useFormInput('')
@@ -64,6 +56,7 @@ function Login({ classes }) {
             type="email"
             name="email"
             margin="normal"
+            variant="outlined"
             fullWidth
             {...email}
           />
@@ -71,6 +64,7 @@ function Login({ classes }) {
             label="Password"
             name="password"
             margin="normal"
+            variant="outlined"
             fullWidth
             {...password}
           />
